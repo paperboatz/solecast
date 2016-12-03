@@ -1,0 +1,37 @@
+<div class='rainAppend'></div>
+
+<div class='block-whole-intro'> 
+	<div class="flip-container flipAnimation" ontouchstart="this.classList.toggle('hover');">
+		<div class="flipper flipAnimation">
+			<div class="front">
+				<img class='img-bag' ng-src='{{ctrl.bagshoeFront}}'>
+			</div>
+			<div class="back" >
+				<img class='img-bag' ng-src='{{ctrl.heelsFront}}'> 
+			</div>
+		</div>
+	</div>
+
+	<div> 
+		<img class='logoIntro' ng-src='{{ctrl.logo}}'> 
+	</div>
+	<div class='text-intro-line'> 
+		<h1> Be a step ahead of Mother Nature. </h1> 
+	</div>
+	<div class='intro-subblock text-intro-sub'> 
+		Add shoes. Set conditions. Never be caught off guard. 
+	</div>
+	<div class='button-animation'> 
+		<button ng-click='ctrl.main()' class='button-animation ghost-btn-blue'>Begin</button>
+	</div>
+</div>
+
+
+<!-- LOADER TO FRONT PAGE -->
+<div class='icon-loader icon-loader-intro' ng-show='ctrl.loader'>  
+	<div class='pulse'> 
+		<div class='bounce1'> <img class='loader-sm' ng-src='{{ctrl.rainSvg}}'> </div>
+		<div class='bounce2'> <img class='loader-sm' ng-src='{{ctrl.snowSvg}}'> </div>
+		<div class='bounce3'> <img class='loader-sm' ng-src='{{ctrl.clearSvg}}'> </div>
+	</div>
+</div>

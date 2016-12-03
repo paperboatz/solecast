@@ -1,0 +1,83 @@
+
+<div class='frm-ctr-wrap'> 
+	
+	<div class='frm-header-block text-frm-header'> 
+		Edit Settings
+	</div>
+	
+	<div class='frm-desc-wrap'>
+
+		<article class="profile-frm">
+			<form name="profileFrm" ng-submit="profileFrm.$valid && ctrl.updateProfile()" novalidate>
+
+				<div class='frm-block'>
+					<label>SoleCast Hours</label> <br> 
+					How many hours would you like to scan ahead?
+				
+					<div class='cont-range'> 
+						<div class='cont-range-hours'> {{ctrl.hours}} hours </div>
+						<input class='hour-range' type="range" value="0" min="1" max="24" list="number" ng-model='ctrl.hours'> 
+						<datalist id="number">
+						  <option>1</option> 
+						  <option>6</option> 
+						  <option>12</option>
+						  <option>18</option>
+						  <option>24</option> 
+						</datalist>  
+					</div>
+				</div>
+
+				<div class='frm-cond-block'> 
+					<div> 
+						<span class='text-frm-cond-header'> Change Location</span> <br>
+					</div>
+
+					<div class='frm-block'>
+						<label>Zipcode</label>
+						<input class="block" type="text" name="zip" ng-model="ctrl.zip" placeholder='90210' minlength="5" maxlength="6" required>
+						<p class="error" ng-show="profileFrm.zip.$invalid && profileFrm.$submitted"> 
+							Please provide a valid zipcode
+						</p>
+						<p class='error' ng-show="ctrl.zipError"> 
+							Please provide a valid zipcode
+						</p>
+					</div>	
+				</div>
+
+				<div class='temp-block frm-block'>
+					<label>Fahrenheit (°F) or Celsius (°C) </label>
+					<select class="block" ng-options="conversion.value as conversion.label for conversion in ctrl.conversions" ng-model="ctrl.conversion" name="types" required> 
+					</select>
+					<p class="error" ng-show="profileFrm.types.$invalid && profileFrm.$submitted">
+						Please Choose a Temperature
+					</p>
+				</div>
+
+				<div class='btn-set-pos'> 
+					<button class='ghost-btn-blue' type="submit"> 
+						Save Settings 
+					</button>
+				</div>
+			</form>
+		</article>
+</div> 
+
+<!-- 
+	* Shows a loader page
+	* when triggering to $state.go to front page
+-->
+
+<!-- LOADER TO FRONT PAGE -->
+<div class='icon-loader icon-loader-intro' ng-show='ctrl.loader'>  
+	<div class='pulse'> 
+		<div class='bounce1'> 
+			<img class='loader-sm' ng-src='{{ctrl.rainSvg}}'>
+		 </div>
+		<div class='bounce2'>
+			<img class='loader-sm' ng-src='{{ctrl.snowSvg}}'>
+		</div>
+		<div class='bounce3'>
+			<img class='loader-sm' ng-src='{{ctrl.clearSvg}}'>
+		</div>
+	</div>
+</div>

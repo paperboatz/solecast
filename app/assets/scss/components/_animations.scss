@@ -1,0 +1,643 @@
+
+/*
+========= FRONTPAGE / INTRO PAGE =====
+========= SNOW ANIMATION =====
+*/
+
+// Because of sticky footer, we had to change 
+// position of the intro page body to be lower (cutting off footer)
+// So to append the rain to the top of page...
+// we have to create an empty object to append the rain
+.rainAppend {
+  position: absolute;
+  width: 100%;
+  height: 300px;
+  top: -100px;
+}
+
+.elementbox {
+  width:100%;
+  height: 50%;
+  position: relative;
+}
+
+.ground {
+	position: relative;	
+	background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0) 100%); 
+	top: 70%;
+	height: 70%;
+}
+
+/*----------------------------------*/
+
+.droplet {
+  position: absolute;
+}
+
+/*----------------------------------*/
+
+.flying {
+  position:absolute;
+  background-color: #d3d3d3;
+  height: 20px;
+  width: 2px;
+  transform:rotate(20deg);
+  opacity:0;
+}
+
+/*----------------------------------*/
+  
+@keyframes flying {
+  0% {
+    transform: translate(12000%, -4000%) rotate(20deg);
+    opacity:1
+  }
+  100% {
+    transform: translate(0,0) rotate(20deg);
+    opacity:1
+  }
+}
+
+/*----------------------------------*/
+
+.splashing {
+  position:absolute;
+  background-color: #34282C;
+  height: 20px;
+  width: 60px;
+  margin-left:-40px;
+  margin-top:20px;
+  border-radius: 100%;
+  opacity:0; 
+}
+
+/*----------------------------------*/
+
+@keyframes splashing {
+  from {
+    opacity:1;
+    transform: scale(0);
+  }
+}
+
+/*
+========= FRONTPAGE ANIMATION =====
+========= SNOW ANIMATION =====
+*/
+
+/*----------------------------------*/
+
+.snowDroplet {
+  position: absolute;
+}
+
+/*----------------------------------*/
+
+.snowFlying {
+  position:absolute;
+  background-color: $light-grey;
+  height: 20px;
+  width: 20px;
+  border-radius: 80%;
+  transform:rotate(40deg);
+  opacity:0;
+}
+
+/*----------------------------------*/
+  
+@keyframes snowFlying {
+  0% {
+    transform: translate(800%, -5000%) rotate(20deg);
+    opacity:1
+  }
+  100% {
+    transform: translate(0,0) rotate(80deg);
+    opacity:1
+  }
+}
+
+/*----------------------------------*/
+
+.snowSplashing {
+  position:absolute;
+  background-color: #FFF;
+  height: 10px;
+  width: 20px;
+  margin-left:-40px;
+  margin-top:20px;
+  border-radius: 100%;
+  animation: 1.5s splashing infinite linear;
+  animation-delay: 1.5s;
+  opacity:0; 
+}
+
+/*----------------------------------*/
+
+@keyframes snowSplashing {
+  from {
+    opacity:1;
+    transform: scale(-1);
+  }
+}
+
+
+/*
+========= FRONTPAGE ANIMATION =====
+========= SUN ROTATION ANIMATION =====
+*/
+
+.rays {
+  transform-origin: 126px 72px;
+  -webkit-animation: spin 9s linear 1;
+  animation: spin 9s linear 1;
+}
+
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+/*
+========= FRONTPAGE ANIMATION =====
+========= CLOUD ANIMATION =====
+*/
+
+.clear-box {
+  position: absolute;
+  top: 20%;
+  left: 15%;
+}
+.cloud-lg {
+  width: 100px;
+}
+.cloud-sm {
+  width: 150px;
+}
+
+/** 
+  * Cloud paths
+*/
+
+.cloud-path-slow {
+  animation: flyby 4s linear 1;
+  animation-fill-mode: forwards;
+}
+
+.cloud-path-fast {
+  animation: flyby 3s linear 1;
+  animation-fill-mode: forwards;
+}
+
+/*
+=== CLOUD ANI FRAMES 
+*/
+@keyframes flyby {
+  0% {
+    -webkit-transform: translate(0px, 0);
+    transform: translate(0px, 0);
+    opacity: 0;
+  }
+  25% {
+    -webkit-transform: translate(125px, 3px);
+    transform: translate(125px, 3px);
+    opacity: 1;
+  }
+  50% {
+    -webkit-transform: translate(250px, 0px);
+    transform: translate(250px, 0);
+    opacity: 1;
+  }
+  75% {
+    -webkit-transform: translate(375px, 3px);
+    transform: translate(375px, 3px);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translate(500px, 0px);
+    transform: translate(500px, 0px);
+    display:none;
+    opacity: 0;
+  }
+}
+
+/*
+========= INTRO PAGE =====
+========= FLIP ANIMATION =====
+*/
+
+/* entire container, keeps perspective */
+.flip-container {
+  perspective: 1000px;
+  margin: 0 auto 3rem;
+}
+  /* flip the pane when hovered */
+.flip-container:hover .flipper, .flip-container.hover .flipper {
+    transform: rotateY(180deg);
+}
+
+.flipAnimation {
+  animation: 3s flipAni 1 ease-out;
+  -webkit-animation-delay: 1s; /* Safari 4.0 - 8.0 */
+  animation-delay: 1s;
+}
+
+@-webkit-keyframes flipAni {
+  0% {
+    -webkit-transform: rotateY(0deg);
+  }
+  25% {
+    -webkit-transform: rotateY(180deg);
+  }
+  50% {
+    -webkit-transform: rotateY(0deg);
+  }
+  60% {
+    -webkit-transform: rotateY(0deg);
+  }
+  100% {
+    -webkit-transform: rotateY(0deg);
+  }
+}
+
+.flip-container, .front, .back {
+  width: 250px;
+  height: 250px;
+}
+
+/* flip speed goes here */
+.flipper {
+  transition: 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+  z-index: 2;
+  /* for firefox 31 */
+  transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+  transform: rotateY(180deg);
+}
+
+.img-bag {
+  margin-bottom: 5%;
+}
+
+.button-animation {
+    -webkit-animation: 2s pulse infinite linear;
+    -moz-animation: 2s pulse infinite linear;
+    animation: 2s pulse infinite linear;
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-transform: scale(0.85) translateY(0%);
+    opacity: 0.5;
+  }
+  50% {
+    -webkit-transform: scale(1.0) translateY(0%);
+    opacity: 1;
+  }
+  60% {
+    -webkit-transform: scale(1.02) translateY(0%);
+    opacity: 1;
+  }
+  65% {
+    -webkit-transform: scale(1.0) translateY(0%);
+    opacity: 1;
+  }
+  90% {
+    -webkit-transform: scale(1.0) translateY(0%);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(0.85) translateY(0%);
+    opacity: 0.5;
+  }
+}
+
+
+/*
+========= FRONTPAGE ANIMATION =====
+========= BOUNCE ANIMATION =====
+*/
+
+
+.rainBounce {
+  left: 50%;
+  margin-top: -52px;
+  margin-left: -52px;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-animation: bounce 1.2s;
+  -webkit-animation-delay: 0.5s;
+  -moz-animation: bounce 1.2s;
+  -moz-animation-delay: 0.5s;
+  animation: bounce 1.2s 1;
+  animation-delay: 0.5s;
+}
+
+.rainBounce:hover {
+  -webkit-animation: bounce 1.2s;
+  -moz-animation: bounce 1.2s;
+  animation: bounce 1.2s;
+}
+
+@-webkit-keyframes bounce {
+  0% {
+    -webkit-transform: translateY(0%);
+  }
+  20% {
+    -webkit-transform: translateY(-120%) rotate(20deg);
+  }
+  30% {
+    -webkit-transform: translateY(0%);
+  }
+  40% {
+    -webkit-transform: translateY(-25%);
+  }
+  50% {
+    -webkit-transform: translateY(0%);
+  }
+  60% {
+    -webkit-transform: translateY(-12%);
+  }
+  70% {
+    -webkit-transform: translateY(0%);
+  }
+  80% {
+    -webkit-transform: translateY(-6%);
+  }
+  100% {
+    -webkit-transform: translateY(0%);
+  }
+}
+
+@-moz-keyframes bounce {
+  0% {
+    -moz-transform: translateY(0%);
+  }
+  20% {
+    -moz-transform: translateY(-120%) rotate(20deg);
+  }
+  30% {
+    -moz-transform: translateY(0%);
+  }
+  40% {
+    -moz-transform: translateY(-25%);
+  }
+  50% {
+    -moz-transform: translateY(0%);
+  }
+  60% {
+    -moz-transform: translateY(-12%);
+  }
+  70% {
+    -moz-transform: translateY(0%);
+  }
+  80% {
+    -moz-transform: translateY(-6%);
+  }
+  100% {
+    -moz-transform: translateY(0%);
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0%);
+  }
+  20% {
+    transform: translateY(-120%) rotate(20deg);
+  }
+  30% {
+    transform: translateY(0%);
+  }
+  40% {
+    transform: translateY(-25%);
+  }
+  50% {
+    transform: translateY(0%);
+  }
+  60% {
+    transform: translateY(-12%);
+  }
+  70% {
+    transform: translateY(0%);
+  }
+  80% {
+    transform: translateY(-6%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+/*
+========= FRONTPAGE ANIMATION =====
+========= SLOWFALL ANIMATION =====
+*/
+
+
+.snowflakedrop {
+  animation: 3s snowflakedrop 1 linear;
+  animation-fill-mode: backwards; 
+}
+
+@keyframes snowflakedrop {
+
+  0% {
+    -webkit-transform: translate(0px, -100px);
+    transform:  translate(0px, -100px);
+    opacity: 0;
+  }
+  25% {
+    -webkit-transform: translate(10px, -75px);
+    transform: rotate(5deg) translate(10px, -75px);
+    opacity: 0.5;
+  }
+  50% {
+    -webkit-transform: translate(0px, -50px);
+    transform: translate(0px, -50px);
+    opacity: 1;
+  }
+  75% {
+    -webkit-transform: translate(-10px, -25px);
+    transform: rotate(5deg)translate(-10px, -25px);
+    opacity: 1;
+  }
+  95% {
+    -webkit-transform: translate(0px, -5px);
+    transform:  translate(0px, 0px);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translate(0px, 0px);
+    transform:  translate(0px, 0px);
+    opacity: 1;
+  }
+}
+
+/*
+========= LOGO ANIMATION =====
+*/
+
+.logoSvg > path {
+  fill: $dark-blue;
+}
+
+.logoSvg:hover > path {
+  fill: $med-blue;
+}
+
+.logo-ani-svg > path {
+  fill: $dark-blue;
+}
+
+// Animate the Logo 
+// they are set at a 3s interval 
+.a-ani{
+    animation: 3s appear 1 linear;
+    animation-fill-mode: forwards;
+}
+
+.shoe-ani{
+    animation: 2s step infinite linear;
+}
+
+.letter-ani{
+    animation: 2s shake infinite linear;
+}
+
+.letter-ani-tiny{
+    animation: 2s shaketiny infinite linear;
+}
+
+.loader {
+  display: inline-block;
+}
+
+@keyframes appear {
+  0%, 10% {
+    opacity: 1;
+  }
+  11%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes step {
+  0%, 13%, 14%, 18%, 22%, 24%, 100% { 
+    -webkit-transform: translate(0px, 0px);
+    transform: translate(0px, 0px);
+  }
+  0%, 13% {
+    opacity: 0;
+  }
+  14%, 16%, 22%, 18%, 24%, 100% {
+    opacity: 1;
+  }
+  16% {
+    -webkit-transform: translate(0px, -3px);
+    transform: rotate(0 deg) translate(0px, -3px);
+  }
+  22% {
+    -webkit-transform: translate(0px, -1px);
+    transform: rotate(0deg) translate(0px, -1px);
+  }
+}
+
+@keyframes shake {
+  0%, 16%, 22%, 24%, 100% { 
+    -webkit-transform: translate(0px, 0px);
+    transform:  translate(0px, 0px);
+  }
+  17% {
+    -webkit-transform: translate(0px, -2px);
+    transform: translate(0px, -2px);
+    fill: $med-blue;
+  }
+  24% {
+    fill: $dark-blue;
+  }
+}
+
+@keyframes shaketiny {
+  0%, 16%, 22%, 24%, 100% { 
+    -webkit-transform: translate(0px, 0px);
+    transform:  translate(0px, 0px);
+  }
+  17% {
+    -webkit-transform: translate(0px, -1px);
+    transform: translate(0px, -1px);
+    fill: $med-blue;
+  }
+  24% {
+    fill: $dark-blue;
+  }
+}
+
+/*
+========= LOADER ANIMATION =====
+// credit: https://codepen.io/maplessmann/pen/OXYgYQ
+*/
+
+.pulse {
+  margin: 300px auto 0;
+  width: 200px;
+  text-align: center;
+}
+
+.loader-sm{
+  width: 20px;
+}
+
+.pulse > div {
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+
+.pulse .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+
+.pulse .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+@-webkit-keyframes sk-bouncedelay {
+  0%, 80%, 100% { -webkit-transform: scale(0) }
+  40% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes sk-bouncedelay {
+  0%, 80%, 100% { 
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  } 40% { 
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+  }
+}
+
+
+

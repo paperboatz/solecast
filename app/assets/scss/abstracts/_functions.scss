@@ -1,0 +1,23 @@
+/**
+	* to retrieve type & line scale values without map-get() property
+	* used with mixin 
+*/
+
+@function type-scale($level) {
+  @return map-get($type-scale, $level);
+}
+
+@function line-height-scale($level) {
+	@return map-get($line-heights, $level)
+}
+
+@function weight-scale($level){
+	@return map-get($type-weights, $level)
+}
+
+/*
+	TIFF NOTE:
+	* Writing Functions: 
+	* The parameter must use $sass notation
+	* The function name can be anything
+*/

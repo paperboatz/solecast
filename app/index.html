@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<!-- METADATA -->
+	<title>SoleCast</title>
+	<link rel="shortcut icon" href=""> <!-- flavicon -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+	<!-- APP STYLES -->
+	<link rel="stylesheet" type="text/css" href="assets/css/vendor/bootstrap.css">
+	<script type="text/javascript" src='assets/js/vendor/jquery.min.js'></script>
+	<script type="text/javascript" src='assets/js/vendor/bootstrap.min.js'></script>
+
+
+	<!-- FRONT JS SCRIPTS -->
+	<script type="text/javascript" src="bower_components/angular/angular.js"></script>
+	<script type="text/javascript" src="https://cdn.auth0.com/js/lock-9.0.min.js"></script>﻿
+	<script type="text/javascript" src="node_modules/angular-jwt/dist/angular-jwt.js"></script>
+	<script type="text/javascript" src="node_modules/angular-storage/dist/angular-storage.js"></script>
+	<script type="text/javascript" src="node_modules/auth0-angular/build/auth0-angular.js"></script>
+	<script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+
+
+	<!-- APP CONTROLLERS -->
+	<script type="text/javascript" src="app.js"></script>
+	<script type="text/javascript" src='site/controllers/frontpage.ctrl.js'></script>
+	<script type="text/javascript" src='site/controllers/dash.ctrl.js'></script>
+	<script type="text/javascript" src='site/controllers/shoe.ctrl.js'></script>
+	<script type="text/javascript" src='site/controllers/navfooter.ctrl.js'></script>
+	<script type="text/javascript" src='site/controllers/intro.ctrl.js'></script>
+	<script type="text/javascript" src='site/controllers/settings.ctrl.js'></script>
+
+	<!-- FILTERS -->
+	<script type="text/javascript" src='site/filters/capitalize.fltr.js'></script>
+	<script type="text/javascript" src='site/filters/reverse.fltr.js'></script>
+	<script type="text/javascript" src='site/filters/title.fltr.js'></script>
+	<script type="text/javascript" src='site/filters/fahrenheit.fltr.js'></script>
+
+	<!-- APP Services -->
+	<script type="text/javascript" src='site/services/shoesrv.srv.js'></script>
+	<script type="text/javascript" src='site/services/apisrv.srv.js'></script>
+	<script type="text/javascript" src='site/services/settingssrv.srv.js'></script>
+
+	<!-- FACTORIES -->
+	<script type="text/javascript" src='site/factory/preloaderimg.fact.js'></script>
+
+	<!-- CSS  -->
+	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display+SC:400,700" rel="stylesheet">
+
+</head>
+	<body ng-app='weatherApp' ng-controller='GlobalCtrl' class={{bodyClass}}>
+		<div ui-view></div>
+	</body>
+</html>

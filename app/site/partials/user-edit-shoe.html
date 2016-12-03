@@ -1,0 +1,113 @@
+<div class='frm-ctr-wrap'> 
+	
+	<div class='frm-header-block text-frm-header'> 
+		Edit Your Shoe 
+	</div>
+<!-- 
+	* novalidate: form will not use default validation styles.
+	* ng-click: form must be $valid and clicked to submit
+	* if form is invalid, then form will not be submitted...
+	* ng-show: will be true because $.invalid and show error message
+	* required means input must be filled in
+	* ng-required:!(blah | blah) - condition won't be required if one of the boxes are checked. 
+-->
+	<article>
+		<form name="shoeFrm" novalidate>
+			<div class='frm-desc-wrap'> 
+				<div> 
+					<span class='text-frm-cond-header'> Describe your Shoe </span> <br> 
+					Fill in all parameters.
+				</div>
+
+				<div class='frm-block'>
+					<label>Name</label>
+					<input class="block" type="text" name="name" ng-model="ctrl.name" placeholder='Swirl Sandles'required>
+					<p class="error" ng-show="shoeFrm.name.$invalid"> Please Enter Name</p>
+				</div>
+
+				<div class='frm-block'>
+					<label>Type</label>
+					<select class="block" ng-options="type.value as type.label for type in ctrl.types" ng-model="ctrl.type" name="types" required> 
+					</select>
+					<p class="error" ng-show="shoeFrm.types.$invalid"> Please Choose a Type </p>
+				</div>
+				<div class='frm-block'>
+					<label>Brand or Make</label>
+					<input class="block" type='text' placeholder='Geox' name='brand' ng-model='ctrl.brand' required>
+					<p class="error" ng-show="shoeFrm.brand.$invalid"> Please Enter Brand or Make</p>
+				</div>
+				<div class='frm-block'>
+					<label>Description</label>
+					<textarea class="block" placeholder='Purchased in Nice, France. Leather. Zip in back.' type="text" name="desc" rows="4" cols="50" ng-model="ctrl.description" required></textarea>
+					<p class="error" ng-show="shoeFrm.desc.$invalid"> Please Complete Description</p>
+				</div>
+
+				<div class='frm-block'>
+					<label>How many colors?</label>
+					<select ng-options="colornum.value as colornum.label for colornum in ctrl.colornums" ng-model="ctrl.pickColor" name="types" required>
+					</select>
+				</div>
+				<div class='frm-clr-picker-sm' ng-show='ctrl.showOneColor()' > 
+					 <input class='frm-clr-picker-lg' type="color" name="favcolor" ng-model='ctrl.firstColor' value="ctrl.firstColor" >
+				</div>
+				<div class='frm-clr-picker-sm' ng-show='ctrl.showTwoColor()'>
+					<input class='frm-clr-picker-lg' type="color" name="favcolor" ng-model='ctrl.secondColor' value="ctrl.secondColor" >
+				</div>
+				<div class='frm-clr-picker-sm' ng-show='ctrl.showThreeColor()'> 
+					<input class='frm-clr-picker-lg' type="color" name="favcolor" ng-model='ctrl.thirdColor' value="ctrl.thirdColor"> 
+				</div>
+				<p class="error" ng-show="shoeFrm.color.$invalid"> Please choose at least 1 color</p>
+			</div> 	<!-- eo description sec of frm  -->
+
+			<div class='frm-cond-block'> 
+				<div> 
+					<p> <span class='text-frm-cond-header'> Shoe Conditions </span> <br> 
+					Specify which conditions you will wear your shoes in. </p>
+				</div>
+				<div class='frm-block'> 
+					<label> Weather </label> 
+				</div> 
+				<div class="frm-inline">
+					<input type="checkbox" name="snow" value='snow' ng-model="ctrl.cond.snow" ng-disabled="ctrl.cond.any" > snow
+				</div>
+				<div class="frm-inline">
+					<input type="checkbox" name="rain" value='rain' ng-model="ctrl.cond.rain"  ng-disabled="ctrl.cond.any" > rain
+				</div>
+				<div class="frm-inline">
+					<input type="checkbox" name="clear" value='clear' ng-model="ctrl.cond.clear"  ng-disabled="ctrl.cond.any" > clear
+				</div>
+				<div class="frm-inline">
+					<input type="checkbox" name="any" value='any' ng-model="ctrl.cond.any" > any
+				</div>
+
+				<div class='frm-block'> 
+					<label> Temperature </label>
+				</div>
+				<div class="frm-inline">
+					<input type="checkbox" name="hot" value='hot' ng-model="ctrl.temp.hot" ng-disabled="ctrl.temp.all" > hot
+				</div>
+				<div class="frm-inline">
+					<input type="checkbox" name="warm" value='warm' ng-model="ctrl.temp.warm" ng-disabled="ctrl.temp.all" > warm
+				</div>
+
+				<div class="frm-inline">
+					<input type="checkbox" name="cool" value='cool' ng-model="ctrl.temp.cool" ng-disabled="ctrl.temp.all" > cool
+				</div>
+				<div class="frm-inline">
+					<input type="checkbox" name="cold" value='cold' ng-model="ctrl.temp.cold" ng-disabled="ctrl.temp.all" > cold
+				</div>
+				<div class="frm-inline">
+					<input type="checkbox" name="all" value='all' ng-model="ctrl.temp.all" > all
+				</div>
+			</div> <!-- eo condition block  -->
+
+			<button class='ghost-btn-blue' type="submit" ng-click='shoeFrm.$valid && ctrl.updateShoe()'>Update Shoe</button>
+			<button class='ghost-btn-red' type="submit" ng-click='ctrl.deleteShoe()'>Delete Shoe</button>
+		</form>
+	</article>
+</div> 
+
+
+
+
+

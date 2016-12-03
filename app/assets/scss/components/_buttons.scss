@@ -1,0 +1,42 @@
+.btn-standard {
+	background-color: $light-blue;
+	padding: 10px 70px;
+	border: thin solid black;
+	font-family: $display-font-stack;
+}
+
+/*	*
+	* used on add/edit page 
+	* should fit the width of the form
+*/
+.btn-add {
+	background-color: $light-blue;
+	padding: 10px 70px;
+	width: 100%;
+	border: thin solid black;
+	font-family: $display-font-stack;
+	font-size: 1.5em;
+}
+
+//http://codepen.io/therealvdeadline/pen/ogOKxp
+.ghost-btn-blue {
+	@include ghost-button($med-blue, 45px, 100%, 2px solid, inline-block);
+	text-transform: uppercase;
+	font-size: type-scale(1);
+	font-family: $display-font-stack;
+}
+
+.ghost-btn-red {
+	@include ghost-button($med-red, 45px, 100%, 2px solid, inline-block);
+	text-transform: uppercase;
+	font-size: type-scale(1);
+	font-family: $display-font-stack;
+}
+
+.ghost-btn-front {
+	@include ghost-button($dark-blue, 30px, 100%, 2px solid, inline-block);
+	text-transform: uppercase;
+	font-size: type-scale(0);
+	line-height: 0;
+	font-family: $display-font-stack;
+}

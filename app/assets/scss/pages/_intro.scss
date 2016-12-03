@@ -1,0 +1,31 @@
+// Using Global Controller to change color
+body.intro-page {
+  background-color: $dark-grey;
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%, transparent), color-stop(50%,#fff), color-stop(100%,transparent)); /* Chrome, Safari4+ */
+  background: -webkit-linear-gradient(left, transparent 0%,#fff 50%,transparent 100%); /* Chrome10+, Safari5.1+ */
+  background: -moz-linear-gradient(left, transparent 0%,#fff 50%,transparent 100%);
+  background: linear-gradient(70deg, #232526, #414345, #232526);
+  position: relative; //sticky footer tyle
+  top: 100px; //sticky footer style
+}
+
+.block-whole-intro {
+    width: 40%;
+    height: 70%;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+}
+
+.logoIntro {
+    width: 90px;
+    padding-bottom: line-height-scale(1);
+}
+
+.intro-subblock{
+    padding-bottom: line-height-scale(2);
+}

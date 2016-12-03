@@ -1,0 +1,41 @@
+@charset 'UTF-8';
+
+// Abstracts
+@import 
+	'abstracts/mixins',
+	'abstracts/variables',
+	'abstracts/functions';
+
+// Vendor 
+@import 
+	'vendor/normalize';
+
+// Base
+@import 
+	'base/base',
+	'base/fonts',
+	'base/typography';
+
+// Layout-related sections
+@import 
+	'layout/headerfooter';
+
+// Components 
+@import 
+	'components/animations',
+	'components/buttons',
+	'components/inputs',
+	'components/loader';
+
+// Page specific 
+@import 
+	'pages/front',
+	'pages/dash',
+	'pages/addeditform',
+	'pages/profileform',
+	'pages/intro';
+
+
+
+
+

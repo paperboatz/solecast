@@ -1,0 +1,121 @@
+.block-opt {
+
+	background-color: white;
+	
+	.block-mid {
+		position: relative;
+	}
+
+	.block-opt-center{
+		text-align: center;
+		position: relative;
+		padding: line-height-scale(3) 0;
+		width: 22%;
+		margin: 0 auto;
+	}
+
+	.block-fltr-wrap{
+
+		display: inline;
+
+		.block-fltr-width{
+			padding-top: line-height-scale(1);
+		}
+
+		.form-control {
+			height: 25px;
+		}
+	} //eo block-filtr-width
+}//eo block-opt
+
+
+.inv {
+
+	background-color: rgb(237, 237, 237) !important;
+
+	.inv-center{
+		position: relative;
+		margin: auto;
+		width: 70%;
+	}
+
+	.inv-block {
+		display: inline-block;
+	}
+
+	.inv-block-img{
+		margin-left: 5%;
+	}
+
+	.img-dash-thumb {
+		width: 70%;
+		margin-bottom: 10%;
+	}
+
+	.inv-block-pos{
+		position: relative;
+
+		.inv-block-desc {
+			position: relative;
+			top: 30px;
+			width: 25rem;
+		}
+
+		.inv-clr {
+			display: inline-block;
+		}
+	}
+	
+	.inv-repeat-block{
+		margin-top: line-height-scale(0);	
+		border-bottom: thin solid black;
+		padding-bottom: line-height-scale(3);
+	}
+
+	.inv-block-brand {
+		display: inline-block;
+	}
+
+	.inv-block-cond {
+		width: 30%;
+		position: relative;
+		transform: translateY(10%);
+
+		ul {
+			list-style: none;
+			display: block;
+			padding-top: 5px;
+
+			li {
+				display: inline-block;
+				 margin-right: -20px;
+			}
+			img {
+				width: 50%;
+			}
+		}
+	}
+
+	.inv-edit-links{
+		padding-top: line-height-scale(-1);
+	}
+
+	// On 2nd last child, take off border
+	// It is the "visible" last child because...
+	// filter:query, creates another child at the end of repeated list
+	.shoe:nth-last-of-type(2){
+		border-style: none; 
+		// makes sure that there is no empty white space
+		// when there is only 1 element on page 
+		margin-bottom: line-height-scale(6);
+	}	
+}
+
+.noshoe-dash-block{
+	margin: 20% auto;
+	text-align: center;
+}
+
+
+
+

@@ -1,0 +1,45 @@
+
+// To create type settings groups in one go. 
+
+// https://scotch.io/tutorials/aesthetic-sass-3-typography-and-vertical-rhythm#disqus_thread
+@mixin type-setting($level){
+	font-size: type-scale($level);
+	line-height: line-height-scale($level);
+}
+
+/*	
+	* =====Ghost Button Mixin===
+*/
+
+/*
+	* used with _button.scss 
+*/
+
+@mixin ghost-button($ghost-button-color, $ghost-button-height, $ghost-button-width, $ghost-button-border, $ghost-button-display) {
+  border: $ghost-button-border;
+  border-color: $ghost-button-color;
+  color: $ghost-button-color;
+	display: $ghost-button-display;
+	height: $ghost-button-height;
+	line-height: $ghost-button-height;
+	margin-top: $ghost-button-height / 3;
+	text-align: center;
+  text-decoration: none;
+	width: $ghost-button-width;
+  -webkit-transition: .2s;
+  -moz-transition: .2s;
+  -o-transition: .2s;
+   transition: .2s;
+
+	&:hover {
+		background: $ghost-button-color;
+    
+     		@if $ghost-button-color == #FFFFFF {
+      			color: #000000;
+      		}
+
+      	@else {
+      			color: #FFFFFF;
+      		}
+  	}
+}

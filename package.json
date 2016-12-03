@@ -1,0 +1,23 @@
+{
+  "name": "rubberboots-nov12",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "bluebird": "^3.4.6",
+    "express-jwt": "^5.1.0",
+    "body-parser": "^1.15.2",
+    "mongoose": "^4.5.9",
+    "cors": "^2.8.1",
+    "mongodb": "^2.2.6",
+    "express": "^4.14.0",
+    "request": "^2.76.0",
+    "sequelize": "^3.24.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

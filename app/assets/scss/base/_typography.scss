@@ -1,0 +1,240 @@
+
+/*
+====== GLOBAL ====
+*/
+
+label {
+	font-weight: weight-scale(heavy);
+	letter-spacing: 2px;
+	text-transform: uppercase;
+}
+
+a {
+	text-decoration: none !important;
+	font-size: type-scale(0);
+	color: $color-link;
+
+	&:visited {
+		color: $color-visited;
+	}
+	&:hover {
+		color: $color-hover;
+		font-weight: weight-scale(heavy);
+	}
+	&:focus {
+		color: $color-focus;
+
+	}
+	&:active {
+		color: $color-active;
+	}
+}
+
+body {
+	@include type-setting(0);
+	font-family: $text-font-stack;
+}
+
+
+h4 {
+	@include type-setting(0);
+	font-weight: weight-scale(heavy);
+	letter-spacing: 2px;
+	padding-bottom: 2px;
+	margin: 0;
+}
+
+table {
+	text-align: center;
+}
+
+/* 
+* ==== Common type =====
+*/
+
+.small-text {
+	@include type-setting(-1);
+}
+
+.small-text-header {
+	@include type-setting(0);
+	font-weight: weight-scale(heavy);
+	letter-spacing: 2px;
+}
+
+.large-text {
+	@include type-setting(2);
+}
+
+
+/* 
+* ==== Nav Link =====
+*/
+
+nav {
+
+	.sandboxBar > a {
+		font-size: type-scale(0);
+		letter-spacing: 1px;
+		// text-transform: uppercase;
+	}
+
+	a {
+		font-size: type-scale(1);
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		color: $light-blue;
+
+		&:visited {
+			color: $med-blue;
+		}
+		&:hover {
+			color: $dark-blue;
+		}
+		&:focus {
+			color: $light-blue;
+		}
+		&:active {
+			color: $light-blue;
+		}
+	}
+} // eo nav
+
+
+/* 
+* ==== Footer Link =====
+*/
+
+footer {
+	color: $mid-grey;
+
+	line-height: 1.5rem;
+
+	a:visited{
+		color: $med-blue;
+	}
+}
+
+/* 
+* ==== USERFRONT PG - Jumbotron text =====
+*/
+
+/* *
+ * Type formats in Jumbotron section on userfront page
+*/ 
+.intro-text {
+	@include type-setting(2);
+	font-weight: weight-scale(light);
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.cond-text-header{
+	@include type-setting(0);
+}
+
+.cond-text-large {
+	@include type-setting(6);
+	font-family: $display-font-stack;
+}
+
+.cond-text-small{
+	@include type-setting(2);
+	font-family: $display-font-stack;
+}
+
+.med-text-header {
+	@include type-setting(2);
+	font-weight: weight-scale(med);
+	font-family: $display-font-stack;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+
+.lastupdate {
+	font-style: italic; 
+}
+/* 
+* ==== OPT TEXT =====
+*/
+
+.text-shoe-count {
+	@include type-setting(2);
+	font-family: $display-font-stack;
+}
+
+/* 
+* ==== DASH TEXT =====
+*/
+
+.text-inv-name {
+	font-size: type-scale(3);
+	line-height: line-height-scale(2);
+	font-family: $display-font-stack;
+}
+
+.text-inv-type {
+	@include type-setting(1);
+	font-weight: weight-scale(med);
+	font-style: italic; 
+}
+
+.text-inv-brand {
+	@include type-setting(1);
+	font-weight: weight-scale(heavy);
+}
+
+.text-inv-pgheader {
+	@include type-setting(1);
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+
+.text-no-shoe{
+	@include type-setting(1)
+}
+
+/* 
+* ==== FORM TEXT =====
+*/
+
+.text-frm-header {
+	@include type-setting(2);
+	font-weight: weight-scale(med);
+	font-family: $display-font-stack;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+
+.text-frm-cond-header {
+	@include type-setting(1);
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	font-family: $display-font-stack;
+}
+
+.error {
+	color: $error;
+	font-weight: weight-scale(heavy);
+}
+
+/* 
+* ==== INTRO TEXT =====
+*/
+
+.text-intro-line {
+	@include type-setting(1);
+	font-family: $display-font-stack;
+	color: $mid-grey;
+	
+	h1 {
+		margin: 0 0 2px 0;
+	}
+}
+
+.text-intro-sub {
+	@include type-setting(1);
+	font-weight: weight-scale(med);
+	font-style: italic; 
+	color: $mid-grey;
+}

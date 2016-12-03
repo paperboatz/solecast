@@ -1,0 +1,113 @@
+/* 
+* --- Solid Colors---
+*/
+
+$dark-blue: hsla(208, 100%, 21%, 1);
+$med-blue: rgb(104, 151, 197);
+$light-blue: hsla(208, 100%, 83%, 1);
+$med-red: hsl(0,100%,25%);
+
+/* 
+* --- Copy Text Color ---
+*/
+
+$light-grey: rgb(237, 237, 237) !default;
+$mid-grey: rgb(153, 153, 153) !default;
+$dark-grey: rgb(68, 68, 68) !default;
+$bright-red: hsl(350, 100%, 53%);
+
+/* 
+* --- Global Link Colors ---
+*/
+
+$color-link: $med-blue;
+$color-visited: $dark-blue;
+$color-hover: $light-blue;
+$color-focus: $light-blue;
+$color-active: $med-blue;
+
+/* 
+* --- Background Colors ---
+*/
+$color-bkg: $light-grey;
+$color-nav: $dark-grey;
+$color-foot: $dark-grey;
+$color-jumbo: $med-blue; 
+
+/* 
+* --- Special Text Colors ---
+*/
+
+$error: $bright-red;
+
+/* 
+* --- Element Colors ---
+*/
+
+$color-picker-border: $mid-grey;
+$color-cloud: #00A0B0; // used with cloud animation
+
+/* 
+* --- Font Stacks ---
+*/
+$display-font-stack: (
+	'Playfair Display',
+	'Georgia',
+	Serif
+);
+
+$text-font-stack: (
+	'Open Sans',
+	'Helvetica',
+	sans-serif
+);
+
+
+/* 
+* ==== Type Scales =====
+*/
+
+/* *
+ * Type & line-height scales used
+ * to create type groupings with proper size & leading
+ * used with _functions and _mixins in _typography
+*/ 
+
+$type-scale: (
+  -1: 0.75rem,  // small text
+  0: 1rem,      // body text
+  1: 1.333rem, 
+  2: 1.777rem, 
+  3: 2.368rem,	
+  4: 3.157rem,
+  5: 4.209rem,
+  6: 5.610rem
+);
+
+$base-font-size: 1rem;
+$base-line-height: $base-font-size * 1.25;
+
+$line-heights: (
+  -3: $base-line-height / 2,
+  -2: $base-line-height / 1.5,
+  -1: $base-line-height,
+  0: $base-line-height,
+  1: $base-line-height * 1.5,
+  2: $base-line-height * 2,
+  3: $base-line-height * 2,
+  4: $base-line-height * 3,
+  5: $base-line-height * 4,
+  6: $base-line-height * 5
+);
+
+$type-weights: (
+	light: 300,
+	med: 400,
+	heavy: 700
+);
+
+
+
+
+
+

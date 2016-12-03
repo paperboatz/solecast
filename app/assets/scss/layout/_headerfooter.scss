@@ -1,0 +1,116 @@
+
+/*
+====== Nav bar ====
+*/
+
+nav {
+
+	.sandbox-icon {
+		border: solid $mid-grey 1px; 
+		padding: 2px 4px;
+		margin-right: 4px;
+		display: inline-block;
+		background-color: #585858 ;
+	}
+
+	.sandboxBar {
+		background-color: rgba(0,0,0,0.75);
+		height: 25px;
+		position: absolute;
+		top: 0px;
+		padding: 0.5% 0 2% 0;
+		width: 100%;
+		text-align: center; 
+		color: white;
+	}
+
+	.navbar {
+		width: 90%;
+		margin: auto;
+
+		.nav-topbuff {
+			padding-top: 26px;
+			padding-bottom: 10px;
+		}
+
+		.nav-right-link {
+			float: right;
+			padding-right: 15px;
+			padding-top: 8px;
+		}
+	}
+
+	.logo {
+		width: 5%;
+	}
+
+	.loader-nav-ani {
+		animation: spin 1s linear 4;
+		width: 5%;
+	}
+} // eo nav
+
+
+/*
+====== FOOTER ====
+*/
+
+footer {
+	background-color: $color-foot;
+	
+	// styles for sticky footer
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 150px;
+
+	.footer-cont {
+		width: 90%;
+		margin: auto;
+		padding: 1.5% 0;
+
+		ul {
+			list-style: none;
+			padding-left: 5px;
+			// margin: 0;
+			line-height: line-height-scale(1);
+		}
+
+
+		.built > ul {
+		    list-style: none;
+		    columns: 2;
+		    -webkit-columns: 2;
+		    -moz-columns: 2;
+		    padding-left: 1.5%;
+		    width: 80%;
+		}
+
+		.wund-logo {
+			width: 90%;
+		}
+
+		.glyphicon {
+			line-height: 0;
+			top: 4px;
+		}
+
+		.glyphicon-envelope:before  {
+			font-size: 1.5em;
+		}
+
+		.portfolio {
+			padding-top: 10px;
+		} 
+	} // eo footer-cont
+
+	.par-indent {
+		margin-left: 5px;
+	}
+}//eo footer
+
+
+
+
+
+
