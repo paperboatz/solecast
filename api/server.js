@@ -20,7 +20,7 @@ app.use(express.static(__dirname + './../app/'));
 app.use(cors());
 
 // DB CONNECTION
-mongoose.connect('mongodb://127.0.0.1/data/db/');
+mongoose.connect('mongodb://localhost/data/db/');
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function(){
 	console.log('Connected to db at /data/db/')

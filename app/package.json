@@ -4,9 +4,11 @@
   "description": "",
   "main": "app.js",
   "dependencies": {
-    "auth0-angular": "^4.2.7",
+    "angular": "^1.5.9",
+    "angular-jwt": "^0.1.8",
     "angular-storage": "^0.0.15",
-    "angular-jwt": "^0.1.8"
+    "angular-ui-router": "^0.3.2",
+    "auth0-angular": "^4.2.7"
   },
   "devDependencies": {},
   "scripts": {

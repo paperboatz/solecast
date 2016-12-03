@@ -1,12 +1,5 @@
 
-# Created by https://www.gitignore.io/api/bower,node,osx
-
-### Bower ###
-bower_components
-.bower-cache
-.bower-registry
-.bower-tmp
-
+# Created by https://www.gitignore.io/api/node,osx
 
 ### Node ###
 # Logs
@@ -56,8 +49,6 @@ jspm_packages
 
 # Yarn Integrity file
 .yarn-integrity
-
-
 
 ### OSX ###
 *.DS_Store
