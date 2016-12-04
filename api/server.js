@@ -5,7 +5,15 @@ var app = express();
 var db = mongoose.connection;
 mongoose.Promise = require('bluebird');
 var jwt = require('express-jwt')
-var cors = require('cors')
+
+//ADD CORS HEADERS ONTO ALL THE ENDPOINTS
+// Need this to acceess api
+app.all('/*', function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
+  res.header("Access-Control-Allow-Methods", "GET, POST","PUT");
+  next();
+});
 
 // Auth, Client Secret from Auth0.com
 // decoded with base64
@@ -17,7 +25,6 @@ var authCheck = jwt({
 //APP CONFIG
 app.use(bodyParser.json());
 app.use(express.static(__dirname + './../app/'));
-app.use(cors());
 
 // DB CONNECTION
 mongoose.connect('mongodb://localhost/data/db/');
@@ -29,15 +36,6 @@ db.once('open', function(){
 // ROUTE CONFIG
 var shoe_routes = require('./routes/shoe_routes');
 var geo_routes = require('./routes/geo_routes'); // delete
-
-//ADD CORS HEADERS ONTO ALL THE ENDPOINTS
-// Need this to acceess api
-app.all('/*', function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
-  res.header("Access-Control-Allow-Methods", "GET, POST","PUT");
-  next();
-});
 
 // SET ROUTES
 // we create this url, then we navigate to the routes file
