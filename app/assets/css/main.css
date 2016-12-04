@@ -634,17 +634,18 @@ footer {
 .lastupdate {
   font-style: italic; }
 
+.text-hours {
+  font-weight: 400;
+  color: #6897c5; }
+
 /* 
-* ==== OPT TEXT =====
+* ==== DASH TEXT =====
 */
 .text-shoe-count {
   font-size: 1.777rem;
   line-height: 2.5rem;
   font-family: "Playfair Display", "Georgia", Serif; }
 
-/* 
-* ==== DASH TEXT =====
-*/
 .text-inv-name {
   font-size: 2.368rem;
   line-height: 2.5rem;
@@ -1366,11 +1367,12 @@ footer {
   .jumbotron .container {
     width: 75%; }
   .jumbotron .block-jumbo {
-    width: 45%;
     margin: auto; }
+    .jumbotron .block-jumbo .block-tempele {
+      position: relative;
+      left: 30%; }
     .jumbotron .block-jumbo .block-temp {
-      display: inline-block;
-      padding-left: 17%; }
+      display: inline-block; }
     .jumbotron .block-jumbo .block-elements {
       display: inline-block;
       padding-left: 2%; }
@@ -1493,7 +1495,7 @@ footer {
   .inv .inv-block-brand {
     display: inline-block; }
   .inv .inv-block-cond {
-    width: 30%;
+    width: 25%;
     position: relative;
     transform: translateY(10%); }
     .inv .inv-block-cond ul {

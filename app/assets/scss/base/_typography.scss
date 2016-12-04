@@ -154,18 +154,20 @@ footer {
 .lastupdate {
 	font-style: italic; 
 }
+
+.text-hours {
+	font-weight: weight-scale(med);
+	color: $med-blue;
+}
+
 /* 
-* ==== OPT TEXT =====
+* ==== DASH TEXT =====
 */
 
 .text-shoe-count {
 	@include type-setting(2);
 	font-family: $display-font-stack;
 }
-
-/* 
-* ==== DASH TEXT =====
-*/
 
 .text-inv-name {
 	font-size: type-scale(3);

@@ -11,13 +11,17 @@
 	}
 
 	.block-jumbo {
-		width: 45%; 
 		margin: auto;
+
+		.block-tempele{
+			position: relative;
+			left: 30%;
+		}
 
 		.block-temp {
 			display: inline-block;
-			padding-left: 17%;
 		}
+		
 		.block-elements {
 			display: inline-block;
 			padding-left: 2%;

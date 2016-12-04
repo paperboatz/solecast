@@ -92,18 +92,20 @@
 
 		<div class='container-fluid block-jumbo'>
 			<div class='block-intro intro-text'> 
-				 Your SoleCast For the next {{ctrl.hours}} hours
+				 Your SoleCast For the next <span class='text-hours'> {{ctrl.hours}} </span> hours
 			</div>
-			<div class="block-temp">
-				<span class='cond-text-header'> Max Temp ({{ctrl.converter}})</span> <br>
-				<div class='cond-text-large'>
-					{{ctrl.maxTemp}}&deg; <br> 
+			<div class='block-tempele'> 
+				<div class="block-temp">
+					<span class='cond-text-header'> Max Temp ({{ctrl.converter}})</span> <br>
+					<div class='cond-text-large'>
+						{{ctrl.maxTemp}}&deg; <br> 
+					</div>
 				</div>
-			</div>
-			<div class='block-elements'>
-				<span class='cond-text-header'> Elements </span> <br> 
-				<span class='cond-text-large'> 
-				{{ctrl.elements | uppercase}} </span>
+				<div class='block-elements'>
+					<span class='cond-text-header'> Elements </span> <br> 
+					<span class='cond-text-large'> 
+					{{ctrl.elements | uppercase}} </span>
+				</div>
 			</div>
 			<div ng-show='ctrl.clear' class='clear-box'>
 				<div class='cloud-pos cloud-path-slow' > 
