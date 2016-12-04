@@ -2,7 +2,6 @@
   * user-front.html
 */
 
-
 (function(){
 	'use strict';
 
@@ -73,7 +72,6 @@
 	    	return ShoeSrv.shoes;
 		}, function (newValue) {
 			if(ShoeSrv.shoes.length > 0){
-				console.log('shoes in array')
 			    user.shoes = ShoeSrv.shoes;
 			    user.is_shoes = true;
 			}
@@ -97,7 +95,6 @@
 		} else {
 			var latitude = SettingSrv.latLong.lat;
 			var longitude = SettingSrv.latLong.lng;
-			console.log(SettingSrv.latLong);
 			console.log('Zip from SettingSrv, grabing lat and long');
 		}
 /**
@@ -147,10 +144,6 @@
 		            } // eo formating 
 
 		           	user.cityProv = level_2 + ', ' + level_1;
-
-		           	console.log(level_2);
-		           	console.log(level_1);
-		           	console.log(user.cityProv);
 	
 		           	/** To fill zipcode in settings
 		           	  * On first load, SettingSrv is empty
@@ -163,7 +156,6 @@
 						SettingSrv.zip = level_3;
 					}	
 
-		           	 console.log(SettingSrv.level_3);
 		           	 console.log(user.cityProv);
 				}) // eo .then
 			} // eo getGeo
@@ -211,7 +203,6 @@
   					return Math.max.apply(null, numArray);
 				}
 
-				console.log(maxNum);
 				console.log(weatherArray);
 				console.log(weatherTempArray);
 				
@@ -233,7 +224,6 @@
 			        user.currentTemp = fahrenheit + fahrenhietIcon; // Current Temp Fahrenhiet
 			        console.log('converting to fahrenheit')
 				} else {
-					console.log(SettingSrv.conversion);
 					console.log('remained celsius');
 				}
 
@@ -276,11 +266,9 @@
 				user.selectFilter = selectFilter;
 
 				var weatherTempTrans = [];
-
 				var weatherRain = false; 
 				var weatherClear = false;
 				var weatherSnow = false;
-
 				var shoeRain = false;
 				var shoeClear = false;
 				var shoeSnow = false; 
@@ -432,9 +420,6 @@
 */
 				// Conditions options: snow, rain, clear, any
 				// temp options: hot, warm, cool, cold, all 
-				console.log(res.conditions);
-				console.log(weatherTempTrans);
-				console.log(res.temperature);
 
 				if (res.conditions.indexOf('any') != -1 && weatherTempTrans.indexOf('hot') != -1 && res.temperature.indexOf('hot') != -1){
 					console.log('shoeAll + weatherHot & shoewHot ');
@@ -458,8 +443,6 @@
 				}
 			} // eo Select filter
 
-
-
 			return res;
 		}) // eo .then conditions
 		.then(function(res){
@@ -471,7 +454,6 @@
 			user.rain = false;
 			user.snow = false;
 			user.clear = false;
-
 			var weatherCond = res.conditions; 
 /*
 ====== RAIN ANI ========

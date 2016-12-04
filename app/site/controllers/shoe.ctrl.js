@@ -13,7 +13,6 @@
 
 		var shoeVm = this;
 		shoeVm.addShoe = addShoe;
-
 		shoeVm.shoe = {};
 		shoeVm.updateShoe = updateShoe;
 /**
