@@ -48,7 +48,7 @@ app.use('/api/geo', geo_routes); // delete
 
 
 // LISTEN TO SERVER
-app.listen(8080, function() {
+app.listen(80, function() {
 	console.log('gurrrrl listening to Port 80, stop with Ctrl + C');
 });
 
