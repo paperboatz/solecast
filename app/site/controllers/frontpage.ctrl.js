@@ -465,26 +465,30 @@
 * it is a ng show with svg in html already
 */ 
 
+			function Droplet(){};
+			Droplet.prototype.left = function(){ 
+				return parseInt( Math.random() * 100 );
+			};
+			Droplet.prototype.top = function(y, w) {
+			   return y + ( this.opacity * w );
+			};
+			Droplet.prototype.opacity = function(){
+				return parseFloat(Math.random().toFixed(1));
+			};
+			Droplet.prototype.scale = function(x){
+			   return this.opacity * x;
+			};
+			Droplet.prototype.duration = function(){
+				return 1 + parseFloat(Math.random().toFixed(2));
+			};
+
 			var App = { numberOfDroplets: 30 };
 			var i = 0;
 
 			while( i < App.numberOfDroplets ) {    
 
-				function Droplet(){};
-				Droplet.prototype.left = () => parseInt( Math.random() * 100 );
-				Droplet.prototype.top = function(y, w) {
-				  let yCord = y + ( this.opacity * w );
-				  return yCord;
-				};
-				Droplet.prototype.opacity = () => parseFloat(Math.random().toFixed(1));
-				Droplet.prototype.scale = function(x){
-				  let scale = this.opacity * x;
-				  return scale;
-				};
-				Droplet.prototype.duration = () => 1 + parseFloat(Math.random().toFixed(2));
-
 				// create snowDroplet & add it onto object
-				const snowDroplet = new Droplet();
+				var snowDroplet = new Droplet();
 				snowDroplet.left = snowDroplet.left();
 				snowDroplet.opacity = snowDroplet.opacity();
 				snowDroplet.top = snowDroplet.top(20, 60);
@@ -492,7 +496,7 @@
 				snowDroplet.duration = snowDroplet.duration();
 				snowDroplet.delay = snowDroplet.duration / 4 ;
 
-				const rainDroplet = new Droplet();
+				var rainDroplet = new Droplet();
 				rainDroplet.left = rainDroplet.left();
 				rainDroplet.opacity = rainDroplet.opacity();
 				rainDroplet.top = rainDroplet.top(45, 35);
