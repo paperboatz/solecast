@@ -1,3 +1,3 @@
 # solecast
 
-# My first project. Thanks for taking a look!
+# My web app. Thanks for taking a look!
