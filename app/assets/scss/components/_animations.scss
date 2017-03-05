@@ -1,3 +1,110 @@
+/*
+========= INTRO PAGE =====
+========= FLIP ANIMATION =====
+*/
+
+/* entire container, keeps perspective */
+.flip-container {
+  perspective: 1000px;
+  margin: 0 auto 3rem;
+}
+  /* flip the pane when hovered */
+.flip-container:hover .flipper, .flip-container.hover .flipper {
+    transform: rotateY(180deg);
+}
+
+.flipAnimation {
+  animation: 3s flipAni 1 ease-out;
+  -webkit-animation-delay: 1s; /* Safari 4.0 - 8.0 */
+  animation-delay: 1s;
+}
+
+@-webkit-keyframes flipAni {
+  0% {
+    -webkit-transform: rotateY(0deg);
+  }
+  25% {
+    -webkit-transform: rotateY(180deg);
+  }
+  50% {
+    -webkit-transform: rotateY(0deg);
+  }
+  60% {
+    -webkit-transform: rotateY(0deg);
+  }
+  100% {
+    -webkit-transform: rotateY(0deg);
+  }
+}
+
+.flip-container, .front, .back {
+  width: 250px;
+  height: 250px;
+}
+
+/* flip speed goes here */
+.flipper {
+  transition: 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+  z-index: 2;
+  /* for firefox 31 */
+  transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+  transform: rotateY(180deg);
+}
+
+.img-bag {
+  margin-bottom: 5%;
+}
+
+.button-animation {
+    -webkit-animation: 2s pulse infinite linear;
+    -moz-animation: 2s pulse infinite linear;
+    animation: 2s pulse infinite linear;
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-transform: scale(0.85) translateY(0%);
+    opacity: 0.5;
+  }
+  50% {
+    -webkit-transform: scale(1.0) translateY(0%);
+    opacity: 1;
+  }
+  60% {
+    -webkit-transform: scale(1.02) translateY(0%);
+    opacity: 1;
+  }
+  65% {
+    -webkit-transform: scale(1.0) translateY(0%);
+    opacity: 1;
+  }
+  90% {
+    -webkit-transform: scale(1.0) translateY(0%);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(0.85) translateY(0%);
+    opacity: 0.5;
+  }
+}
 
 /*
 ========= FRONTPAGE / INTRO PAGE =====
@@ -166,8 +273,9 @@
 
 .clear-box {
   position: absolute;
-  top: 20%;
-  left: 15%;
+  top: 10%;
+  left: -15%;
+  
 }
 .cloud-lg {
   width: 100px;
@@ -191,7 +299,7 @@
 }
 
 /*
-=== CLOUD ANI FRAMES 
+   CLOUD ANI FRAMES 
 */
 @keyframes flyby {
   0% {
@@ -221,115 +329,6 @@
     opacity: 0;
   }
 }
-
-/*
-========= INTRO PAGE =====
-========= FLIP ANIMATION =====
-*/
-
-/* entire container, keeps perspective */
-.flip-container {
-  perspective: 1000px;
-  margin: 0 auto 3rem;
-}
-  /* flip the pane when hovered */
-.flip-container:hover .flipper, .flip-container.hover .flipper {
-    transform: rotateY(180deg);
-}
-
-.flipAnimation {
-  animation: 3s flipAni 1 ease-out;
-  -webkit-animation-delay: 1s; /* Safari 4.0 - 8.0 */
-  animation-delay: 1s;
-}
-
-@-webkit-keyframes flipAni {
-  0% {
-    -webkit-transform: rotateY(0deg);
-  }
-  25% {
-    -webkit-transform: rotateY(180deg);
-  }
-  50% {
-    -webkit-transform: rotateY(0deg);
-  }
-  60% {
-    -webkit-transform: rotateY(0deg);
-  }
-  100% {
-    -webkit-transform: rotateY(0deg);
-  }
-}
-
-.flip-container, .front, .back {
-  width: 250px;
-  height: 250px;
-}
-
-/* flip speed goes here */
-.flipper {
-  transition: 0.6s;
-  transform-style: preserve-3d;
-  position: relative;
-}
-
-/* hide back of pane during swap */
-.front, .back {
-  backface-visibility: hidden;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-/* front pane, placed above back */
-.front {
-  z-index: 2;
-  /* for firefox 31 */
-  transform: rotateY(0deg);
-}
-
-/* back, initially hidden pane */
-.back {
-  transform: rotateY(180deg);
-}
-
-.img-bag {
-  margin-bottom: 5%;
-}
-
-.button-animation {
-    -webkit-animation: 2s pulse infinite linear;
-    -moz-animation: 2s pulse infinite linear;
-    animation: 2s pulse infinite linear;
-}
-
-@-webkit-keyframes pulse {
-  0% {
-    -webkit-transform: scale(0.85) translateY(0%);
-    opacity: 0.5;
-  }
-  50% {
-    -webkit-transform: scale(1.0) translateY(0%);
-    opacity: 1;
-  }
-  60% {
-    -webkit-transform: scale(1.02) translateY(0%);
-    opacity: 1;
-  }
-  65% {
-    -webkit-transform: scale(1.0) translateY(0%);
-    opacity: 1;
-  }
-  90% {
-    -webkit-transform: scale(1.0) translateY(0%);
-    opacity: 1;
-  }
-  100% {
-    -webkit-transform: scale(0.85) translateY(0%);
-    opacity: 0.5;
-  }
-}
-
 
 /*
 ========= FRONTPAGE ANIMATION =====
@@ -455,6 +454,7 @@
 
 
 .snowflakedrop {
+  width: 100%;
   animation: 3s snowflakedrop 1 linear;
   animation-fill-mode: backwards; 
 }
@@ -491,6 +491,24 @@
     transform:  translate(0px, 0px);
     opacity: 1;
   }
+}
+
+
+/* 
+========= FRONTPAGE ANIMATION =====
+========= Add shoe button ========= 
+*/
+
+.add-shoe-div:hover {
+  background-color: rgba($color-hover, 0.2);
+  -moz-border-radius: 5%;
+  -webkit-border-radius: 5%;
+  border-radius: 5%;
+  padding-top: 5px;
+  -webkit-animation: 2s pulse infinite linear;
+  -moz-animation: 2s pulse infinite linear;
+  animation: 2s pulse infinite linear;
+
 }
 
 /*
@@ -638,6 +656,7 @@
     transform: scale(1.0);
   }
 }
+
 
 
 

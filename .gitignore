@@ -1,5 +1,5 @@
 
-# Created by https://www.gitignore.io/api/node,osx
+# https://www.gitignore.io/api/node%2Cosx%2Csass
 
 ### Node ###
 # Logs
@@ -74,4 +74,10 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+
+### Sass ###
+.sass-cache/
+*.css.map
+
+# End of https://www.gitignore.io/api/node,osx,sass
 

@@ -1,3 +1,4 @@
+<!-- //rain appends to empty div on top of page -->
 <div class='rainAppend'></div>
 
 <div class='block-whole-intro'> 
@@ -12,20 +13,16 @@
 		</div>
 	</div>
 
-	<div> 
-		<img class='logoIntro' ng-src='{{ctrl.logo}}'> 
-	</div>
-	<div class='text-intro-line'> 
-		<h1> Be a step ahead of Mother Nature. </h1> 
-	</div>
-	<div class='intro-subblock text-intro-sub'> 
-		Add shoes. Set conditions. Never be caught off guard. 
+	<img class='logoIntro' ng-src='{{ctrl.logo}}'> 
+	
+	<div class='intro-subblock text-intro-line'> 
+		<h1> Know what shoes to wear for the weather ahead.</h1>
+		Add Shoes. Set their conditions. Know the forecast. 
 	</div>
 	<div class='button-animation'> 
 		<button ng-click='ctrl.main()' class='button-animation ghost-btn-blue'>Begin</button>
 	</div>
 </div>
-
 
 <!-- LOADER TO FRONT PAGE -->
 <div class='icon-loader icon-loader-intro' ng-show='ctrl.loader'>  

@@ -18,6 +18,7 @@
 
 /**
 =============== PRELOADING IMAGES ===============
+	// Because pages load faster than the images
 */
 		$scope.imageLocations = [
 			'../../assets/img/conditions_svg/clearcond.svg',

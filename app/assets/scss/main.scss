@@ -27,15 +27,16 @@
 	'components/inputs',
 	'components/loader';
 
-// Page specific 
+// Page Specific 
 @import 
 	'pages/front',
 	'pages/dash',
 	'pages/addeditform',
-	'pages/profileform',
+	'pages/settings',
 	'pages/intro';
 
-
-
+// Media Queries
+@import 
+	'responsive/mediaqueries';
 
 

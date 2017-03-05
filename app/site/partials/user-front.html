@@ -1,112 +1,117 @@
-<!-- 
-===== CURRENT =====
-* contains:  current condtions, SoleCast... 
- -->
- <div class='current'>
-	<h4> CURRENTLY </h4> 
-	{{ctrl.currentTemp}} & {{ctrl.currentCond | TitleCaseFltr}} in {{ctrl.cityProv | TitleCaseFltr}}
-	<div class='current-block lastupdate'>
-		Forcast Conditions Last Updated on<br>{{ctrl.date | date : 'MMM d, y h:mm a'}}
-	</div>
-	<button title="Use your location" class='btn-local-pos ghost-btn-front' ng-click="ctrl.reloadPage()">Use Your Location</button>
-</div><!--  eo current  -->
 
-<!-- ===== JUMBOTRON ===== -->
-<!-- ==== contains: ANIMATIONS depending on weather & SoleCast -->
+<!--
+	.centered contains both projection & shoe list sections
+	clearfix to clear the floated sections or else it would collapse under footer -->
+<div class='content-fluid centered clearfix'> 
+	<div class='cont-solecast'>
+<!-- ===== Projection section ===== -->
+<!-- ==== contains: ANIMATIONS depending on weather & SoleCast 
+-->
+		<div class='ani-cont'>
 
-<div class='jumbotron'>
-
-	<div class='container'>
-		<div class='img-rain-pos' ng-show='ctrl.rain'> 
-			<img class='img-rain-size rainBounce' ng-src='{{ctrl.rainImg}}'>
-		</div>
-
-		<div class='img-snow-pos' ng-show='ctrl.snow'> 
-			<img class='snowflakedrop' ng-src='{{ctrl.snowImg}}'>
-		</div>
-
-		<div class='img-clear-pos' ng-show='ctrl.clear'> 
-			<svg version="1.1" id="Layer_1" x="0px" y="0px"
-				 width="200px" height="200px" viewBox="80 25 95 95" enable-background="new 82.441 28.899 86.875 86.876"
-				 xml:space="preserve">
-			<g class='rays'>
-				<path fill="none" stroke="#43647E" stroke-width="2" stroke-miterlimit="10" d="M127.283,42.838l-0.01-5.494
-					c-0.002-1.059-0.862-1.916-1.92-1.915c-1.059,0.002-1.914,0.863-1.914,1.921l0.009,5.546
-					C124.732,42.791,126.014,42.777,127.283,42.838z"/>
-				<path fill="none" stroke="#43647E" stroke-width="2" stroke-miterlimit="10" d="M103.35,53.243c0.823-0.971,1.707-1.897,2.66-2.763
-					l-3.887-3.874c-0.75-0.748-1.964-0.747-2.712,0.003s-0.746,1.964,0.005,2.711L103.35,53.243z"/>
-				<path fill="none" stroke="#43647E" stroke-width="2" stroke-miterlimit="10" d="M160.871,73.733
-					c0.254-0.001,0.495-0.052,0.717-0.141c0.703-0.285,1.197-0.977,1.197-1.78c-0.002-1.06-0.86-1.916-1.92-1.915l-5.549,0.01
-					c0.106,1.283,0.121,2.563,0.06,3.834L160.871,73.733z"/>
-				<path fill="none" stroke="#43647E" stroke-width="2" stroke-miterlimit="10" d="M147.734,52.467l3.875-3.887
-					c0.748-0.75,0.746-1.963-0.004-2.711s-1.965-0.746-2.711,0.002l-3.922,3.937C145.945,50.631,146.869,51.515,147.734,52.467z"/>
-				<path fill="none" stroke="#43647E" stroke-width="2" stroke-miterlimit="10" d="M90.887,70.941
-					c-1.061,0.001-1.918,0.862-1.914,1.92c0.002,1.058,0.862,1.915,1.92,1.914l5.545-0.01c-0.104-1.284-0.119-2.563-0.058-3.834
-					L90.887,70.941z"/>
-				<path fill="none" stroke="#43647E" stroke-width="2" stroke-miterlimit="10" d="M148.408,91.431
-					c-0.824,0.972-1.708,1.897-2.66,2.765l3.889,3.873c0.562,0.561,1.381,0.699,2.072,0.418c0.23-0.094,0.449-0.232,0.637-0.422
-					c0.748-0.75,0.746-1.964-0.004-2.711L148.408,91.431z"/>
-				<path fill="none" stroke="#43647E" stroke-width="2" stroke-miterlimit="10" d="M124.475,101.836l0.008,5.494
-					c0.002,1.059,0.863,1.916,1.92,1.912c0.255,0,0.494-0.049,0.717-0.14c0.705-0.284,1.199-0.976,1.197-1.778l-0.01-5.549
-					C127.023,101.883,125.743,101.896,124.475,101.836z"/>
-				<path fill="none" stroke="#43647E" stroke-width="2" stroke-miterlimit="10" d="M104.021,92.208l-3.873,3.887
-					c-0.748,0.748-0.748,1.963,0.004,2.711c0.561,0.559,1.382,0.699,2.074,0.419c0.231-0.095,0.45-0.235,0.637-0.423l3.921-3.936
-					C105.812,94.043,104.887,93.159,104.021,92.208z"/>
-			</g>
-			<g class='rays'>
-				<path fill="none" stroke="#43647E" stroke-width="2" stroke-miterlimit="10" d="M144.65,33.855c0.613-1.446-0.062-3.116-1.51-3.729
-					c-1.447-0.614-3.117,0.063-3.729,1.51l-5.209,12.3c-0.011,0.021-0.015,0.046-0.022,0.066c1.823,0.537,3.592,1.244,5.277,2.117
-					L144.65,33.855z"/>
-				<path fill="none" stroke="#43647E" stroke-width="2" stroke-miterlimit="10" d="M111.682,46.37c0.008,0.021,0.022,0.037,0.032,0.06
-					c0.987-0.538,2.011-1.032,3.079-1.466c0.711-0.287,1.43-0.537,2.148-0.766l-5-12.346c-0.59-1.457-2.248-2.159-3.705-1.569
-					c-1.455,0.589-2.16,2.248-1.568,3.705L111.682,46.37z"/>
-				<path fill="none" stroke="#43647E" stroke-width="2" stroke-miterlimit="10" d="M85.178,58.803l12.299,5.209
-					c0.021,0.008,0.045,0.014,0.068,0.021c0.536-1.824,1.244-3.591,2.117-5.277l-12.266-5.193c-1.446-0.613-3.117,0.064-3.729,1.512
-					C83.055,56.522,83.73,58.192,85.178,58.803z"/>
-				<path fill="none" stroke="#43647E" stroke-width="2" stroke-miterlimit="10" d="M151.787,58.172
-					c0.537,0.986,1.031,2.012,1.463,3.08c0.288,0.711,0.538,1.429,0.768,2.148l12.346-5c1.457-0.59,2.16-2.25,1.57-3.706
-					s-2.25-2.159-3.705-1.569l-12.383,5.015C151.827,58.148,151.809,58.163,151.787,58.172z"/>
-				<path fill="none" stroke="#43647E" stroke-width="2" stroke-miterlimit="10" d="M107.105,110.82
-					c-0.612,1.445,0.063,3.115,1.512,3.728c0.723,0.309,1.502,0.293,2.176,0.02c0.678-0.273,1.247-0.805,1.553-1.527l5.209-12.299
-					c0.01-0.023,0.014-0.047,0.023-0.068c-1.824-0.534-3.592-1.243-5.279-2.115L107.105,110.82z"/>
-				<path fill="none" stroke="#43647E" stroke-width="2" stroke-miterlimit="10" d="M140.074,98.307
-					c-0.008-0.021-0.02-0.041-0.03-0.062c-0.987,0.539-2.013,1.03-3.079,1.465c-0.713,0.289-1.43,0.537-2.148,0.768l5,12.346
-					c0.59,1.457,2.248,2.158,3.705,1.568c1.455-0.59,2.158-2.248,1.568-3.704L140.074,98.307z"/>
-				<path fill="none" stroke="#43647E" stroke-width="2" stroke-miterlimit="10" d="M99.971,86.502
-					c-0.539-0.987-1.033-2.012-1.465-3.08c-0.289-0.711-0.538-1.43-0.767-2.148l-12.347,5.002c-1.457,0.588-2.158,2.248-1.567,3.703
-					c0.589,1.457,2.248,2.159,3.704,1.568l12.381-5.014C99.932,86.525,99.949,86.513,99.971,86.502z"/>
-				<path fill="none" stroke="#43647E" stroke-width="2" stroke-miterlimit="10" d="M166.58,85.872l-12.301-5.211
-					c-0.021-0.009-0.043-0.013-0.066-0.021c-0.536,1.824-1.244,3.59-2.117,5.277l12.266,5.194c0.724,0.306,1.502,0.289,2.179,0.017
-					c0.673-0.273,1.244-0.805,1.551-1.527C168.703,88.152,168.025,86.482,166.58,85.872z"/>
-			</g>
-			<g>
-				<path fill="#43647E" d="M147.404,63.62c-4.814-11.889-18.355-17.623-30.243-12.809c-11.89,4.814-17.624,18.357-12.808,30.244
-					c4.812,11.89,18.354,17.624,30.242,12.809C146.486,89.047,152.221,75.508,147.404,63.62z M130.811,55.624
-					c-0.27,1.186-1.451,1.93-2.637,1.658c-2.896-0.658-5.888-0.416-8.652,0.704c-3.592,1.456-6.403,4.222-7.914,7.789
-					c-1.512,3.569-1.543,7.511-0.088,11.104c0.457,1.125-0.088,2.41-1.215,2.867c-0.271,0.108-0.551,0.162-0.826,0.162
-					c-0.871,0-1.694-0.521-2.041-1.377c-1.897-4.684-1.856-9.824,0.113-14.475c1.969-4.652,5.633-8.26,10.316-10.156
-					c3.604-1.459,7.507-1.777,11.285-0.915C130.337,53.256,131.08,54.437,130.811,55.624z"/>
-			</g>
-			</svg>
-		</div>
-
-		<div class='container-fluid block-jumbo'>
-			<div class='block-intro intro-text'> 
-				 Your SoleCast For the next <span class='text-hours'> {{ctrl.hours}} </span> hours
+			<!-- Rain Animation -->
+			<div class='img-rain-pos' ng-show='ctrl.rain'>
+				<img class='img-rain-size rainBounce' ng-src='{{ctrl.rainImg}}'>
 			</div>
-			<div class='block-tempele'> 
-				<div class="block-temp">
-					<span class='cond-text-header'> Max Temp ({{ctrl.converter}})</span> <br>
-					<div class='cond-text-large'>
-						{{ctrl.maxTemp}}&deg; <br> 
+
+			<!-- Snow Animation -->
+			<div class='img-snow-pos' ng-show='ctrl.snow'>
+				<img class='snowflakedrop' ng-src='{{ctrl.snowImg}}'>
+			</div>
+	
+			<!-- Clear Animation -->
+			<div class='img-clear-pos' ng-show='ctrl.clear'> 
+				<svg  version="1.1" id="Layer_1" x="0px" y="0px"
+					 width="200px" height="200px" viewBox="80 25 95 95" enable-background="new 82.441 28.899 86.875 86.876"
+					 xml:space="preserve">
+				<g class='rays'>
+					<path fill="none" stroke="#43647E" stroke-width="2" stroke-miterlimit="10" d="M127.283,42.838l-0.01-5.494
+						c-0.002-1.059-0.862-1.916-1.92-1.915c-1.059,0.002-1.914,0.863-1.914,1.921l0.009,5.546
+						C124.732,42.791,126.014,42.777,127.283,42.838z"/>
+					<path fill="none" stroke="#43647E" stroke-width="2" stroke-miterlimit="10" d="M103.35,53.243c0.823-0.971,1.707-1.897,2.66-2.763
+						l-3.887-3.874c-0.75-0.748-1.964-0.747-2.712,0.003s-0.746,1.964,0.005,2.711L103.35,53.243z"/>
+					<path fill="none" stroke="#43647E" stroke-width="2" stroke-miterlimit="10" d="M160.871,73.733
+						c0.254-0.001,0.495-0.052,0.717-0.141c0.703-0.285,1.197-0.977,1.197-1.78c-0.002-1.06-0.86-1.916-1.92-1.915l-5.549,0.01
+						c0.106,1.283,0.121,2.563,0.06,3.834L160.871,73.733z"/>
+					<path fill="none" stroke="#43647E" stroke-width="2" stroke-miterlimit="10" d="M147.734,52.467l3.875-3.887
+						c0.748-0.75,0.746-1.963-0.004-2.711s-1.965-0.746-2.711,0.002l-3.922,3.937C145.945,50.631,146.869,51.515,147.734,52.467z"/>
+					<path fill="none" stroke="#43647E" stroke-width="2" stroke-miterlimit="10" d="M90.887,70.941
+						c-1.061,0.001-1.918,0.862-1.914,1.92c0.002,1.058,0.862,1.915,1.92,1.914l5.545-0.01c-0.104-1.284-0.119-2.563-0.058-3.834
+						L90.887,70.941z"/>
+					<path fill="none" stroke="#43647E" stroke-width="2" stroke-miterlimit="10" d="M148.408,91.431
+						c-0.824,0.972-1.708,1.897-2.66,2.765l3.889,3.873c0.562,0.561,1.381,0.699,2.072,0.418c0.23-0.094,0.449-0.232,0.637-0.422
+						c0.748-0.75,0.746-1.964-0.004-2.711L148.408,91.431z"/>
+					<path fill="none" stroke="#43647E" stroke-width="2" stroke-miterlimit="10" d="M124.475,101.836l0.008,5.494
+						c0.002,1.059,0.863,1.916,1.92,1.912c0.255,0,0.494-0.049,0.717-0.14c0.705-0.284,1.199-0.976,1.197-1.778l-0.01-5.549
+						C127.023,101.883,125.743,101.896,124.475,101.836z"/>
+					<path fill="none" stroke="#43647E" stroke-width="2" stroke-miterlimit="10" d="M104.021,92.208l-3.873,3.887
+						c-0.748,0.748-0.748,1.963,0.004,2.711c0.561,0.559,1.382,0.699,2.074,0.419c0.231-0.095,0.45-0.235,0.637-0.423l3.921-3.936
+						C105.812,94.043,104.887,93.159,104.021,92.208z"/>
+				</g>
+				<g class='rays'>
+					<path fill="none" stroke="#43647E" stroke-width="2" stroke-miterlimit="10" d="M144.65,33.855c0.613-1.446-0.062-3.116-1.51-3.729
+						c-1.447-0.614-3.117,0.063-3.729,1.51l-5.209,12.3c-0.011,0.021-0.015,0.046-0.022,0.066c1.823,0.537,3.592,1.244,5.277,2.117
+						L144.65,33.855z"/>
+					<path fill="none" stroke="#43647E" stroke-width="2" stroke-miterlimit="10" d="M111.682,46.37c0.008,0.021,0.022,0.037,0.032,0.06
+						c0.987-0.538,2.011-1.032,3.079-1.466c0.711-0.287,1.43-0.537,2.148-0.766l-5-12.346c-0.59-1.457-2.248-2.159-3.705-1.569
+						c-1.455,0.589-2.16,2.248-1.568,3.705L111.682,46.37z"/>
+					<path fill="none" stroke="#43647E" stroke-width="2" stroke-miterlimit="10" d="M85.178,58.803l12.299,5.209
+						c0.021,0.008,0.045,0.014,0.068,0.021c0.536-1.824,1.244-3.591,2.117-5.277l-12.266-5.193c-1.446-0.613-3.117,0.064-3.729,1.512
+						C83.055,56.522,83.73,58.192,85.178,58.803z"/>
+					<path fill="none" stroke="#43647E" stroke-width="2" stroke-miterlimit="10" d="M151.787,58.172
+						c0.537,0.986,1.031,2.012,1.463,3.08c0.288,0.711,0.538,1.429,0.768,2.148l12.346-5c1.457-0.59,2.16-2.25,1.57-3.706
+						s-2.25-2.159-3.705-1.569l-12.383,5.015C151.827,58.148,151.809,58.163,151.787,58.172z"/>
+					<path fill="none" stroke="#43647E" stroke-width="2" stroke-miterlimit="10" d="M107.105,110.82
+						c-0.612,1.445,0.063,3.115,1.512,3.728c0.723,0.309,1.502,0.293,2.176,0.02c0.678-0.273,1.247-0.805,1.553-1.527l5.209-12.299
+						c0.01-0.023,0.014-0.047,0.023-0.068c-1.824-0.534-3.592-1.243-5.279-2.115L107.105,110.82z"/>
+					<path fill="none" stroke="#43647E" stroke-width="2" stroke-miterlimit="10" d="M140.074,98.307
+						c-0.008-0.021-0.02-0.041-0.03-0.062c-0.987,0.539-2.013,1.03-3.079,1.465c-0.713,0.289-1.43,0.537-2.148,0.768l5,12.346
+						c0.59,1.457,2.248,2.158,3.705,1.568c1.455-0.59,2.158-2.248,1.568-3.704L140.074,98.307z"/>
+					<path fill="none" stroke="#43647E" stroke-width="2" stroke-miterlimit="10" d="M99.971,86.502
+						c-0.539-0.987-1.033-2.012-1.465-3.08c-0.289-0.711-0.538-1.43-0.767-2.148l-12.347,5.002c-1.457,0.588-2.158,2.248-1.567,3.703
+						c0.589,1.457,2.248,2.159,3.704,1.568l12.381-5.014C99.932,86.525,99.949,86.513,99.971,86.502z"/>
+					<path fill="none" stroke="#43647E" stroke-width="2" stroke-miterlimit="10" d="M166.58,85.872l-12.301-5.211
+						c-0.021-0.009-0.043-0.013-0.066-0.021c-0.536,1.824-1.244,3.59-2.117,5.277l12.266,5.194c0.724,0.306,1.502,0.289,2.179,0.017
+						c0.673-0.273,1.244-0.805,1.551-1.527C168.703,88.152,168.025,86.482,166.58,85.872z"/>
+				</g>
+				<g>
+					<path fill="#43647E" d="M147.404,63.62c-4.814-11.889-18.355-17.623-30.243-12.809c-11.89,4.814-17.624,18.357-12.808,30.244
+						c4.812,11.89,18.354,17.624,30.242,12.809C146.486,89.047,152.221,75.508,147.404,63.62z M130.811,55.624
+						c-0.27,1.186-1.451,1.93-2.637,1.658c-2.896-0.658-5.888-0.416-8.652,0.704c-3.592,1.456-6.403,4.222-7.914,7.789
+						c-1.512,3.569-1.543,7.511-0.088,11.104c0.457,1.125-0.088,2.41-1.215,2.867c-0.271,0.108-0.551,0.162-0.826,0.162
+						c-0.871,0-1.694-0.521-2.041-1.377c-1.897-4.684-1.856-9.824,0.113-14.475c1.969-4.652,5.633-8.26,10.316-10.156
+						c3.604-1.459,7.507-1.777,11.285-0.915C130.337,53.256,131.08,54.437,130.811,55.624z"/>
+				</g>
+				</svg>
+			</div>
+		</div>
+
+		<div class='block-solecast'>
+			<div class='block-city'>
+				<a ui-sref="user.settings" class='text-city'> {{ctrl.cityProv | TitleCaseFltr}}</a>
+				<a ui-sref="user.settings"> <span class='glyphicon glyphicon-pencil' title='Edit Location' aria-hidden="true"></span></a>
+			</div>
+
+			<div class='block-tempele'>
+				<div class="block-condcenter">
+					<div class='block-projection projection-text'> 
+						Within the next <a ui-sref="user.settings"> <span class='text-hours'>{{ctrl.hours}} HOURS </span>  <span class='glyphicon glyphicon-pencil glyphicon-hours' title='Edit Hours' aria-hidden="true"></span></a> your projected conditions will be:
+					</div>
+					<div class="block-temp">
+						<h4> 
+						Max Temp ({{ctrl.converter}})</h4>
+						<div class='cond-text-large'>
+							{{ctrl.maxTemp}}&deg;
+						</div>
+					</div>
+					<div class='block-elements'>
+						<h4> Elements </h4>
+						<div class='cond-text-large'>
+						{{ctrl.elements | uppercase}}</div>
 					</div>
 				</div>
-				<div class='block-elements'>
-					<span class='cond-text-header'> Elements </span> <br> 
-					<span class='cond-text-large'> 
-					{{ctrl.elements | uppercase}} </span>
-				</div>
 			</div>
+
 			<div ng-show='ctrl.clear' class='clear-box'>
 				<div class='cloud-pos cloud-path-slow' > 
 					<img class='cloud-lg' ng-src='../../assets/img/other/cloud.svg'>
@@ -115,61 +120,89 @@
 					<img class='cloud-sm' ng-src='../../assets/img/other/cloud.svg'>
 				</div> 
 			</div> <!-- eo clear div -->
-		</div>  <!-- eo block-jumbo -->
-	</div> <!-- eo container // bootstrp -->
-</div> <!-- eo of jumbo // bootstrap  -->
+		</div>  
+	</div> <!-- eo of cont-solecast -->
 
+	<!-- ===== SHOES TO WEAR LIST ===== -->
 
-<!-- ===== WHAT SHOES TO WEAR ===== -->
+	<div class='container-fluid sect-shoe-list'>
 
-<div class='container-fluid sect-shoe-list'>
+		 <div class='current'>
+		 	<div class='current-section'> 
+				<div class='current-inline'> <h4> CURRENTLY </h4> </div>
+				{{ctrl.currentTemp}} & {{ctrl.currentCond | TitleCaseFltr}}
+			 </div>
 
-	<div class='block-wearshoehead'> 
-		<div class='med-text-header list-sub'> Wear these shoes today </div>
-	</div>
+			 <div class='current-section'> 
+			 	<div class='current-inline'> <h4> Forecast Conditions Last Updated </h4></div> {{ctrl.date | date : 'MMM d, y h:mma'}}
+			 </div>
+		</div><!--  eo current  -->
 
-	<div ng-repeat="shoe in ctrl.allShoeData | filter : ctrl.selectFilter | filter: x as results"> 
-		<div class='col-md-3 col-sm-6 col-xs-12'>
-			<div class='shoe-bottom-marg'>
+		<div class='block-wearshoehead'> 
+			<div class='med-text-header list-sub'> Wear these shoes today </div>
+		</div>
 
-				<div class='inv-block'> 
-					<img class='img-dash-thumb' ng-src='{{ctrl.boots}}' ng-show="shoe.type == 'boots'">
-					<img class='img-dash-thumb' ng-src='{{ctrl.clog}}' ng-show="shoe.type == 'clog'">
-					<img class='img-dash-thumb' ng-src='{{ctrl.dressShoe}}' ng-show="shoe.type == 'dress shoe'">
-					<img class='img-dash-thumb' ng-src='{{ctrl.flats}}' ng-show="shoe.type == 'flats'">
-					<img class='img-dash-thumb' ng-src='{{ctrl.heels}}' ng-show="shoe.type == 'heels'">
-					<img class='img-dash-thumb' ng-src='{{ctrl.other}}' ng-show="shoe.type == 'other'">
-					<img class='img-dash-thumb' ng-src='{{ctrl.sandles}}' ng-show="shoe.type == 'sandles'">
-					<img class='img-dash-thumb' ng-src='{{ctrl.sneakers}}' ng-show="shoe.type == 'sneakers'">
-				</div>
+		<div ng-repeat="shoe in ctrl.allShoeData | filter : ctrl.selectFilter | filter: x as results"> 
+			<div class='col-md-3 col-sm-6 col-xs-12'>
+				<div class='shoe-bottom-marg'>
+					<div class='inv-block'> 
+						<img class='img-dash-thumb' ng-src='{{ctrl.boots}}' ng-show="shoe.type == 'boots'">
+						<img class='img-dash-thumb' ng-src='{{ctrl.clog}}' ng-show="shoe.type == 'clog'">
+						<img class='img-dash-thumb' ng-src='{{ctrl.dressShoe}}' ng-show="shoe.type == 'dress shoe'">
+						<img class='img-dash-thumb' ng-src='{{ctrl.flats}}' ng-show="shoe.type == 'flats'">
+						<img class='img-dash-thumb' ng-src='{{ctrl.heels}}' ng-show="shoe.type == 'heels'">
+						<img class='img-dash-thumb' ng-src='{{ctrl.other}}' ng-show="shoe.type == 'other'">
+						<img class='img-dash-thumb' ng-src='{{ctrl.sandles}}' ng-show="shoe.type == 'sandles'">
+						<img class='img-dash-thumb' ng-src='{{ctrl.sneakers}}' ng-show="shoe.type == 'sneakers'">
+					</div>
 
-				<div class='color-palette-middle'>
-					<div ng-style='{"width": "20px",
-  					"height": "20px",
-  					"background-color": "{{shoe.colors[0]}}"}'>
-  					</div>
-  					<div ng-style='{"width": "20px",
-  					"height": "20px",
-  					"background-color": "{{shoe.colors[1]}}"}'> 
-  					</div>
-  					<div ng-style='{"width": "20px",
-  					"height": "20px",
-  					"background-color": "{{shoe.colors[2]}}"}'> 
-  					</div>
-				</div>
-				
-				<div class='shoe-desc'>
-					<span class='small-text-header'> {{shoe.name | uppercase}} </span>
-					<br>
-					{{shoe.brand | uppercase }}
-					<br> 
-					<span class='desc'> {{shoe.description | Capitalize }} </span>
+					<div class='color-palette-middle'>
+						<div ng-style='{"width": "20px",
+	  					"height": "20px",
+	  					"background-color": "{{shoe.colors[0]}}"}'>
+	  					</div>
+	  					<div ng-style='{"width": "20px",
+	  					"height": "20px",
+	  					"background-color": "{{shoe.colors[1]}}"}'> 
+	  					</div>
+	  					<div ng-style='{"width": "20px",
+	  					"height": "20px",
+	  					"background-color": "{{shoe.colors[2]}}"}'> 
+	  					</div>
+					</div>
+					
+					<div class='shoe-desc'>
+						<span class='small-text-header'> {{shoe.name | uppercase}} </span>
+						<br>
+						{{shoe.brand | uppercase }}
+						<br> 
+						<span class='desc'> {{shoe.description | Capitalize }} </span>
+					</div>
 				</div>
 			</div>
+		</div> 
+
+		<!-- Add Shoe div added after list of shoes -->
+		<div class='col-md-3 col-sm-6 col-xs-12'>
+			<a ui-sref="user.add_shoe"> 
+				<div class='add-shoe-div'>
+					<div class='addshoe-shape'> 
+						<div class='add-center'> 
+							<div class='add-symbol'> + </div>
+						</div>
+					</div>
+					<div class='add-shoe-text'> 
+						ADD SHOE
+					</div>
+				</div>
+			</a>
 		</div>
-	</div> 
-	<div class='noshoe-block' ng-show='results.length == 0'> 
-		<img class='img-noShoe' ng-src="../../assets/img/shoe_svg/plasticbagshoes.svg">
-		<span class='no-shoe text-no-shoe'> Sorry, you don't own any shoes that fit these conditions. </br>Go barefoot my child or <a class='nav-right-link' ui-sref="user.front_page"> ADD A SHOE </a> you're willing to wear.</span> 
-	</div>
-</div> <!-- eo list of shoes -->
+
+		<!-- Shows when there are no shoes that match today's conditions-->
+		<div class='col-md-3 col-sm-6 col-xs-12 noshoe-block' ng-show='results.length == 0'> 
+			<img class='img-noShoe' ng-src="../../assets/img/shoe_svg/plasticbagshoes.svg">
+			<span class='no-shoe text-no-shoe'>Sorry, you don't own any shoes that can wear today. <a class='nav-right-link' ui-sref="user.front_page"> ADD A SHOE </a> that fits today's conditions.</span> 
+		</div>
+	</div> <!-- eo list of shoes -->
+
+</div> <!-- eo .centered -->

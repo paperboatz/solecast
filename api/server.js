@@ -45,11 +45,9 @@ var geo_routes = require('./routes/geo_routes'); // delete
 app.use('/api/shoes', shoe_routes);
 app.use('/api/geo', geo_routes); // delete
 
-
-
 // LISTEN TO SERVER
 app.listen(80, function() {
-	console.log('gurrrrl listening to Port 80, stop with Ctrl + C');
+	console.log('gurrrrl listening to Port 8080, stop with Ctrl + C');
 });
 
 

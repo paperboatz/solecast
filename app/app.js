@@ -7,7 +7,7 @@
 		.module('weatherApp')
 		.controller('GlobalCtrl', function ($scope){
 
-			// // Change Intro Bkg
+			// Change Intro Bkg
 			$scope.$on('$stateChangeStart', function(event, toState, toParams) {
 				var className = toState.name.replace(/[\W_]+/g, ''); // gets rid of all 
 				console.log(className)
@@ -167,7 +167,7 @@
 		              auth.signout();
 		              store.remove('profile');
 		              store.remove('token');
-		              $location.path('/home')
+		              // $location.path('/home')
 		            }
 		            return $q.reject(rejection);
 		          }
@@ -185,13 +185,6 @@
 
 		})//EO config
 		.run(function($rootScope, auth, store, jwtHelper, $state, $location){ 
-
-			// // Change Intro Bkg
-			// $rootScope.$on('$stateChangeStart', function(event, toState, toParams, $scope) {
-			// 	var className = toState.name.replace(/[\W_]+/g, ''); // gets rid of all 
-			// 	console.log(className)
-		 	//	$scope.bodyClass = className + '-page';
-			// });
 
 			// .run logic that happens after app is running
 			// $rootScope watches changes in app location
@@ -216,7 +209,7 @@
 						}
 					}
 				} else { // or redirect the user to home root so it can log in again
-					$location.path('/');
+					// $location.path('/'); 
 				}
 			})// eo $rootScope 
 		})// eo .run

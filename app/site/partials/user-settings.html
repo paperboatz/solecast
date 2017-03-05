@@ -15,26 +15,26 @@
 					How many hours would you like to scan ahead?
 				
 					<div class='cont-range'> 
-						<div class='cont-range-hours'> {{ctrl.hours}} hours </div>
+						<div class='cont-input-pad'> {{ctrl.hours}} hours </div>
 						<input class='hour-range' type="range" value="0" min="1" max="24" list="number" ng-model='ctrl.hours'> 
 						<datalist id="number">
 						  <option>1</option> 
 						  <option>6</option> 
 						  <option>12</option>
 						  <option>18</option>
-						  <option>24</option> 
+						  <option>24</option>
 						</datalist>  
 					</div>
 				</div>
 
 				<div class='frm-cond-block'> 
-					<div> 
-						<span class='text-frm-cond-header'> Change Location</span> <br>
-					</div>
 
 					<div class='frm-block'>
-						<label>Zipcode</label>
-						<input class="block" type="text" name="zip" ng-model="ctrl.zip" placeholder='90210' minlength="5" maxlength="6" required>
+						<label>Zipcode</label><br>
+						Change your location.
+						<div class='cont-input-pad'> 
+							<input class="block" type="text" name="zip" ng-model="ctrl.zip" placeholder='90210' minlength="5" maxlength="6" required>
+						</div>
 						<p class="error" ng-show="profileFrm.zip.$invalid && profileFrm.$submitted"> 
 							Please provide a valid zipcode
 						</p>
@@ -44,7 +44,7 @@
 					</div>	
 				</div>
 
-				<div class='temp-block frm-block'>
+				<div class=''>
 					<label>Fahrenheit (°F) or Celsius (°C) </label>
 					<select class="block" ng-options="conversion.value as conversion.label for conversion in ctrl.conversions" ng-model="ctrl.conversion" name="types" required> 
 					</select>

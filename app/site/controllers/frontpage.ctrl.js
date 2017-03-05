@@ -22,7 +22,7 @@
 		user.sandles = '../../assets/img/shoe_svg/sandles.svg';
 		user.sneakers = '../../assets/img/shoe_svg/sneaker.svg';
 
-		// Condition images
+		// Condition Images
 		user.snowImg = '../../assets/img/conditions_svg/snowcondFront.svg';
 		user.rainImg = '../../assets/img/conditions_svg/rainFront.svg';
 
@@ -35,14 +35,8 @@
 		var weatherArray = [];
 		var weatherTempArray = [];
 
-		// Location btn to reload page to bring geolocation perm
-		user.reloadPage = function(){
-			console.log('Page Reload to bring back GeoLocation Perm');
-			$window.location.reload();
-		};
-
 /**
-====== Change Thumbnail colors =====
+====== Change Thumbnail Colors =====
 */
 		ShoeSrv.getShoes()
 			.then (function(res){

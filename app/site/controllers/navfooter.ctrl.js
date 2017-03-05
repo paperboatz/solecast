@@ -40,8 +40,11 @@
 			auth.signin({}, function(profile, token) {
 				store.set('profile', profile); 
 				store.set('id_token', token);
-				$state.go('intro');
-				$window.location.reload(); // refresh so my service's userId will not persist in shoeSrv
+				$state.go('intro')
+				.then(function(){
+					// refresh so user's data will be retrieved
+					$window.location.reload();
+				});
 			}, function (error){
 				console.log(error);
 			});

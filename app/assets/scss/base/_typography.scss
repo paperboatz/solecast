@@ -1,3 +1,11 @@
+// See variables.scss for type scale
+// See mixins.scss for mixin of type-setting for font-size & line-height
+// see functions.scss for font size &  line height & type scale
+
+
+// Sass examples 
+// @include type-setting(0) - mixin for size/line-height
+// font-weight: weight-scale(heavy) - getting mapping of weight-scale 
 
 /*
 ====== GLOBAL ====
@@ -36,12 +44,19 @@ body {
 }
 
 
+h1 {
+	margin: 0 0 2px 0;	
+	@include type-setting(2);
+	font-family: $display-font-stack;
+}
+
 h4 {
 	@include type-setting(0);
 	font-weight: weight-scale(heavy);
-	letter-spacing: 2px;
+	letter-spacing: 1px;
 	padding-bottom: 2px;
 	margin: 0;
+	text-transform: uppercase;
 }
 
 table {
@@ -68,7 +83,7 @@ table {
 
 
 /* 
-* ==== Nav Link =====
+* ==== Nav bar =====
 */
 
 nav {
@@ -76,7 +91,6 @@ nav {
 	.sandboxBar > a {
 		font-size: type-scale(0);
 		letter-spacing: 1px;
-		// text-transform: uppercase;
 	}
 
 	a {
@@ -98,16 +112,21 @@ nav {
 			color: $light-blue;
 		}
 	}
+
+	.tagline-text {
+		color: $med-blue;
+		font-family: $display-font-stack;
+		font-size: type-scale(1);
+	}
 } // eo nav
 
 
 /* 
-* ==== Footer Link =====
+* ==== Footer =====
 */
 
 footer {
 	color: $mid-grey;
-
 	line-height: 1.5rem;
 
 	a:visited{
@@ -116,25 +135,21 @@ footer {
 }
 
 /* 
-* ==== USERFRONT PG - Jumbotron text =====
+* ==== FRONT PAGE text =====
 */
 
 /* *
- * Type formats in Jumbotron section on userfront page
+ * Type formats in Conditions section on front page
 */ 
-.intro-text {
-	@include type-setting(2);
-	font-weight: weight-scale(light);
+.text-city {
+	@include type-setting(1);
 	text-align: center;
 	text-transform: uppercase;
 }
 
-.cond-text-header{
-	@include type-setting(0);
-}
-
 .cond-text-large {
-	@include type-setting(6);
+	font-size: type-scale(6);
+	line-height: line-height-scale(5);
 	font-family: $display-font-stack;
 }
 
@@ -151,13 +166,33 @@ footer {
 	letter-spacing: 2px;
 }
 
-.lastupdate {
+.projection-text {
+	@include type-setting(1);
+}
+
+.lastupdate-text {
 	font-style: italic; 
 }
 
 .text-hours {
 	font-weight: weight-scale(med);
-	color: $med-blue;
+}
+
+.glyphicon-hours{
+	font-size: 0.9rem;
+}
+
+.add-shoe-text {
+	@include type-setting(2);
+	color: rgba($color-active, 0.5);
+	letter-spacing: 2px;
+}
+
+.add-symbol {
+	font-family: $display-font-stack;
+	font-weight: weight-scale(heavy);
+	font-size: 5rem;
+	color: rgba($color-active, 0.5);
 }
 
 /* 
@@ -193,7 +228,7 @@ footer {
 }
 
 .text-no-shoe{
-	@include type-setting(1)
+	@include type-setting(0)
 }
 
 /* 
@@ -228,15 +263,5 @@ footer {
 	@include type-setting(1);
 	font-family: $display-font-stack;
 	color: $mid-grey;
-	
-	h1 {
-		margin: 0 0 2px 0;
-	}
 }
 
-.text-intro-sub {
-	@include type-setting(1);
-	font-weight: weight-scale(med);
-	font-style: italic; 
-	color: $mid-grey;
-}
