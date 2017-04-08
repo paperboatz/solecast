@@ -1,0 +1,250 @@
+
+// ===== Screen Query: ===== 
+// Media queries will only apply IF we meet the conditions
+// Built as desktop first
+
+// ===== SMALLER SCREENS ===== 
+// IPHONE 5 & 6
+
+// Anything => (equal or less than) 600px will apply
+// larger width than second query, so this quiery will cover the minor query below
+// if not, this style will not apply
+@media screen and (max-width: 700px) {
+
+	// intro page /#
+	.block-whole-intro {
+		width: 100%;
+	}
+	
+	.button-animation {
+		width: 75%;
+		margin: 0 auto;
+	}
+
+	// Nav Bar
+	// Logo 
+	#layer_2 {
+		width: 100px;
+	}
+
+	nav .tagline-text {
+		display: none;
+	}
+
+	.navbar {
+		margin-bottom: 0px;
+	}
+
+	// == user-front.html
+	.centered {
+		left: 0;
+	}
+
+	.container-fluid > .navbar-header{
+		margin-right: 0px;
+	}
+
+
+	// SOLECAST CONTAINER
+	.cont-solecast {
+		width: 100%;
+
+		.ani-cont {
+			margin-top: 4%; 
+			
+			.img-clear-pos, .img-snow-pos, .img-rain-pos {
+				position: initial;
+				float: left;
+				padding: 0 5%;
+			}
+
+			.img-rain-pos { 
+				width: initial;
+				margin-left: 0px;
+				
+				.rainBounce {
+					margin-left: 0px;
+				}
+			}
+		}
+	}
+
+	h4 {
+		@include type-setting(-1)
+	}
+
+	.cond-text-large {
+		@include type-setting(4);
+	}
+
+	.projection-text {
+		@include type-setting(0);
+	}
+
+
+	.block-solecast .block-city {
+		padding-bottom: 5%;
+		text-align: left;
+	}
+
+	.med-text-header {
+		@include type-setting(1);
+	}
+
+	//Animation Clear
+	#Layer_1 {
+		width: 160px;
+	}
+
+	.sect-shoe-list {
+		width: 100%;
+		margin: 0;
+
+		.current {
+			margin-top: 0;
+			padding: 3% 2%;
+		}
+
+		.shoe-desc {
+			width: initial;
+			float: none;
+			margin-left: 2%;
+		}
+
+		.list-sub {
+		width: 80%;
+		}
+
+		.shoe-bottom-marg {
+			margin-bottom: 5%;
+			margin-left: 20%;
+		}
+	}
+
+	// wear shoes section
+	.container-fluid {
+		padding: 0;
+	}
+
+	.inv-block{
+		margin-right: 5%;
+	}
+
+	.block-solecast .block-temp {
+		margin-bottom: 5px;
+	}
+
+	// add shoe button
+	.add-shoe-text {
+		display: inline-block;
+	}
+
+	.addshoe-shape {
+		width: 100%;
+		height: 50px;
+		margin: 0 auto 2%;
+		border-radius: 0px;
+	}
+
+	.add-shoe-div {
+		width: 100%;
+		padding: 0 0 30px;
+	}
+
+	.add-symbol {
+		display: inline-block;
+	}
+}
+
+
+@media screen and (max-width: 770px) {
+
+	//Hide footer up to 770px
+	footer {
+		height: 4%;
+	
+		.footer-hide {
+			display: none;
+		}
+
+		.footer-mobile {
+			display: initial;
+		}
+	}
+
+	// ===add_shoe.html & edit_shoe.html
+	.frm-ctr-wrap {
+		padding: 5%;
+	}
+}
+
+// ===== FOR TABLET SCREENS 
+
+// Includes a range
+// will only be applied between 451px to 700px
+// it will overlap the max-width: 700px query
+// This query will be put under the first query, so it cascade down!
+// if not, this won't be applied
+
+// After 700px width, the layout will change significantly
+// from single stacking modules to two sections 
+@media only screen 
+	and (min-width: 451px) 
+	and (max-width: 700px) {
+
+	.sect-shoe-list .shoe-bottom-marg {
+		margin-left: 28%;
+	}
+}
+
+// ===== MINOR QUERIES
+@media only screen 
+	and (min-width: 601px) 
+	and (max-width: 800px) {
+
+	.add-shoe-div {
+		width: 60%;
+		padding: 0 0 30px;
+		margin: 0 auto;
+	}
+
+	.sect-shoe-list .shoe-bottom-marg {
+		margin-left: 10%;
+	}
+}
+
+@media only screen 
+	and (min-width: 701px) 
+	and (max-width: 800px) {
+
+	.cont-solecast .img-clear-pos  {
+		left: 0px;
+	}
+
+	.cond-text-large{
+		@include type-setting(4);
+	}
+
+	.block-solecast .block-temp {
+		margin-bottom: 10px;
+	}
+}
+
+@media only screen
+	and (min-width: 720px) 
+	and (max-width: 770px) {
+	
+	.add-shoe-div {
+		margin: 0 0;
+	}
+}
+
+@media only screen 
+	and (min-width: 880px) 
+	and (max-width: 1050px) {
+
+	.block-solecast .block-temp {
+		margin-bottom: 15px;
+	}
+}
+
