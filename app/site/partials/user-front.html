@@ -106,8 +106,8 @@
 					</div>
 					<div class='block-elements'>
 						<h4> Elements </h4>
-						<div class='cond-text-large'>
-						{{ctrl.elements | uppercase}}</div>
+						<div class='cond-text-large' ng-repeat='elements in ctrl.elements'>
+						{{elements | uppercase}}</div>
 					</div>
 				</div>
 			</div>
@@ -142,7 +142,7 @@
 			<div class='med-text-header list-sub'> Wear these shoes today </div>
 		</div>
 
-		<div ng-repeat="shoe in ctrl.allShoeData | filter : ctrl.selectFilter | filter: x as results"> 
+		<div ng-repeat="shoe in ctrl.allShoeData | filter : ctrl.selectFilter | filter: x as results" ng-hide='ctrl.hideShoes'> 
 			<div class='col-md-3 col-sm-6 col-xs-12'>
 				<div class='shoe-bottom-marg'>
 					<div class='inv-block'> 

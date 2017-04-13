@@ -12,6 +12,8 @@
 	function FrontCtrl(ShoeSrv, SettingSrv, $scope, $state, $http, ApiService, locoFrontObj, $window){
 		var user = this;
 
+		console.log(this);
+
 		// Shoe Images
 		user.boots = '../../assets/img/shoe_svg/boot.svg';
 		user.clog = '../../assets/img/shoe_svg/clog.svg';
@@ -31,6 +33,7 @@
 		user.completeWeatherObj = {};
 		user.hours = SettingSrv.hours; // determines hr range of forcast
 		user.latLong = SettingSrv.latLong;
+		user.hideShoes = true;
 
 		var weatherArray = [];
 		var weatherTempArray = [];
@@ -76,7 +79,7 @@
 */
 
 /**
-	* Check if srv to see if latLong is empty/false, which no submit in srv yet
+	* Check if srv to see if latLong is empty/false, which means no submit in srv yet
 	  will grab current lat/long from app.js resolve locoFrontObj
 	* If true, means submition in srv,
 	  grab the lat/long from srv
@@ -91,11 +94,11 @@
 			var longitude = SettingSrv.latLong.lng;
 			console.log('Zip from SettingSrv, grabing lat and long');
 		}
-/**
-====== Get Current Location from Geocoder Api =====
-*/
 
-		function getGeo(){
+
+// ====== Get Current Location from Geocoder Api =====
+
+		(function getGeo(){
 
 				ApiService.request('/geo/geolocation', {latitude, longitude}, 'GET')
 				.then(function(res){
@@ -152,9 +155,7 @@
 
 		           	 console.log(user.cityProv);
 				}) // eo .then
-			} // eo getGeo
-
-			getGeo();
+			})(); // eo getGeo
 		
 /**
 === GET THE WEATHER DATA FROM Darksky API IN SERVER ======
@@ -162,7 +163,7 @@
   * to GET request. return res is data sent back. 
 */
 
-		function getWeather(){
+		(function getWeather(){
 			return ApiService.request('/geo', {latitude, longitude}, 'GET')
 			.then (function(res){
 				console.log(res);
@@ -175,11 +176,8 @@
 			})
 			.then(function(res){
 				var hourly = res.data.hourly.data[0];
-				user.currentCond = res.data.hourly.data[0].icon;
-				user.hours = SettingSrv.hours;
-				
-				console.log('current cond: '+user.currentCond);
-				
+				var weatherObj = [];
+
 				for (var i = 0; i < user.hours; i++){
 					var condition = res.data.hourly.data[i].icon;
 					weatherArray.push(condition);
@@ -189,26 +187,27 @@
 					var weatherTempRound = Math.round(weatherTemp);
 					weatherTempArray.push(weatherTempRound);
 				} // eo hour/temp Loop
+				
+				var fahrenhietIcon = '°F';
+				var celsiusIcon = '°C';
+				var conversion = SettingSrv.conversion; // taking default conversion
+				var currentTempOnly = weatherTempArray[0]; // current degrees in C
+	
+				user.elements = weatherObj; 
+				user.currentCond = res.data.hourly.data[0].icon;
+				user.hours = SettingSrv.hours;
+				user.currentTemp = weatherTempArray[0] + celsiusIcon;			
+				user.converter = celsiusIcon;
 
-				// Get max temperature of the Array
-				var maxNum = getMaxOfArray(weatherTempArray);
-
+				// Get max tempof the Array
 				function getMaxOfArray(numArray) {
   					return Math.max.apply(null, numArray);
 				}
 
-				console.log(weatherArray);
-				console.log(weatherTempArray);
-				
-				var fahrenhietIcon = '°F';
-				var celsiusIcon = '°C';
-				user.currentTemp = weatherTempArray[0] + celsiusIcon;
-				var conversion = SettingSrv.conversion; // taking default conversion
-				var currentTempOnly = weatherTempArray[0]; // current degrees in C
-				user.maxTemp = maxNum;
-				user.converter = celsiusIcon;
+				var maxNum = getMaxOfArray(weatherTempArray);
+				user.maxTemp = maxNum;	
 
-// CONVERTING °C to °F & replacing symbol
+// Converting °C to °F & replacing symbol
 // Uses Profile Service to grab changed values
 				if (conversion === 'fahrenheit'){
 					var tempOnly = user.currentTemp.replace(/°C/g,'');
@@ -221,32 +220,26 @@
 					console.log('remained celsius');
 				}
 
-				console.log('current temp: ' + user.currentTemp);
+// condense API parameters & define
+// API default conditions: clear-day, clear-night, rain, snow, sleet, wind, 
+// fog, cloudy, partly-cloudy-day, or partly-cloudy-night. 
 
-				// condense API parameters & define
-				// API default conditions: clear-day, clear-night, rain, snow, sleet, wind, 
-				// fog, cloudy, partly-cloudy-day, or partly-cloudy-night. 
-				var weatherObj = [];
-
-					if (weatherArray.includes('rain')){
-						weatherObj.push('rain');
-					}
-					if (weatherArray.includes('thunderstorm')){
-						weatherObj.push('rain');
-					}
-					if (weatherArray.includes('sleet')){
-						weatherObj.push('snow');
-					}
-					if (weatherArray.includes('snow')){
-						weatherObj.push('snow');
-					}
-					if (!weatherArray.includes("rain") && !weatherArray.includes("snow")){
-						weatherObj.push('clear');
-					}
-
-				console.log(weatherObj);
-				user.elements = weatherObj.toString(); // displays current cond as string, not array
-
+				if (weatherArray.includes('rain')){
+					weatherObj.push('rain');
+				}
+				if (weatherArray.includes('thunderstorm')){
+					weatherObj.push('rain');
+				}
+				if (weatherArray.includes('sleet')){
+					weatherObj.push('snow');
+				}
+				if (weatherArray.includes('snow')){
+					weatherObj.push('snow');
+				}
+				if (!weatherArray.includes("rain") && !weatherArray.includes("snow")){
+					weatherObj.push('clear');
+				}
+				
 				return user.completeWeatherObject = {
 					currentTemp: currentTempOnly,
 					conditions: weatherObj, 
@@ -255,200 +248,87 @@
 			})
 			.then(function(res){
 
-				console.log(res);
-
-				user.selectFilter = selectFilter;
-
-				var weatherTempTrans = [];
-				var weatherRain = false; 
-				var weatherClear = false;
-				var weatherSnow = false;
-				var shoeRain = false;
-				var shoeClear = false;
-				var shoeSnow = false; 
-				
-				for (var i = 0; i < res.conditions.length; i++){
-
-					var weatherCon = res.conditions[i];
-
-					if (weatherCon == 'rain'){
-						weatherRain = true;
-						console.log('There is weatherRain');
-					}
-					else if (weatherCon == 'clear'){
-						weatherClear = true;
-						console.log('There is WeatherClear');
-					}
-					else if (weatherCon == 'snow'){
-						weatherSnow = true;
-						console.log('There is weatherSnow');
-					} else {
-						console.log('none');
-					}
-				} // eo weather app FOR loop
+			    user.selectFilter = selectFilter;
+				var wTemp = '';
+				var wCond = res.conditions;
 
 /**
   *	TRANSLATING WEATHER API TEMP TO KEYWORDS 
 */
 				if (res.maxTemp > 28 && res.maxTemp < 75){
-  					weatherTempTrans.push('hot');
+  					wTemp = 'hot';
 				}
 				if (res.maxTemp > 18 && res.maxTemp <= 28){
-					weatherTempTrans.push('warm');
+					wTemp = 'warm';
 				}
 				if (res.maxTemp > 5 && res.maxTemp <= 18){
-					weatherTempTrans.push('cool');
+					wTemp = 'cool';
 				}
 				if (res.maxTemp > -50 && res.maxTemp <= 5){
-					weatherTempTrans.push('cold');
-				}
+					wTemp = 'cold';
+				}		
+
+/**
+=============== SHOE & WEATHER CONDITIONS FILTER ===============
+*/
+// select Filter takes 1 item(shoe) from ng-repeat and checks if true, then  it will show
+// we compare each element in sCond array to wCond
+// then compare sTemp array to wTemp array
+// if both comparisions are true, then the shoe will show 
+
 				
-				console.log(weatherTempTrans);
+				function selectFilter(shoe){
 
-/**
-=============== SHOE LOGIC ===============
-*/	
+					var sCond = shoe.conditions;
+					var sTemp = shoe.temperature;
 
-/** 
-  * Checking User Shoe input conditions
-  * Turning shoeRain, shoeClear, shoeSnow true if it finds it in the array
-  * After, filter will sort out via true
-*/				
+					function compareShoeToWeather(shoeCond, weatherCond){
+					  var match = false;
+					  shoeCond.forEach(function(element, index) {
+					  	if (weatherCond.indexOf(element) !== -1)
+					  		return match = true; 
+					   });
 
-				for (var i = 0; i < user.allShoeData.length; i++){
-					for (var b = 0; b < user.allShoeData[i].conditions.length; b++){
-						var singleEle = user.allShoeData[i].conditions[b];
-						if (singleEle == 'rain'){
-							shoeRain = true;
-						} else if (singleEle == 'clear'){
-							shoeClear = true;
-						} else if (singleEle == 'snow'){
-							shoeSnow = true;
-						} else {
-							console.log('none')
-						}
-					} // eo inner loop
-				} // eo shoeData Loop
+					  return match
+					}
 
-/**
-=============== COMBINED CONDITIONS FILTER ===============
-*/
+					if (compareShoeToWeather(sCond, wCond) && compareShoeToWeather(sTemp, wTemp)){
+					  	console.log(sCond + ' ' + wCond + ' ' + sTemp +' '+ wTemp);
+						return true;
+					  } else {
+					  	console.log('no match');
+					  	return false;
+					  }
+				}// eo Select filter
 
-			function selectFilter(res){
-/** 
-  * checks if the contains a keyword like 'rain' 
-  * -1 means if it never occurs, so  != -1 means if it does, return true
-  * these are global var, so it doesn't take from the shoe.... 
-*/
-				if (weatherRain == true && shoeRain == true && res.conditions.indexOf('rain') != -1 && weatherTempTrans.indexOf('hot') != -1 && res.temperature.indexOf('hot') != -1){
-					console.log('weatherRain & shoeRain match + weatherHot & shoeHot ');
-					return true;
-				}
-				if (weatherRain == true && shoeRain == true && res.conditions.indexOf('rain') != -1 && weatherTempTrans.indexOf('warm') != -1 && res.temperature.indexOf('warm') != -1){
-					console.log('weatherRain & shoeRain match + weatherWarm & shoeWarm ');
-					return true;
-				}
-				if (weatherRain == true && shoeRain == true && res.conditions.indexOf('rain') != -1 && weatherTempTrans.indexOf('cool') != -1 && res.temperature.indexOf('cool') != -1){
-					console.log('weatherRain & shoeRain match + weatherCool & shoeCool');
-					return true;
-				}
-				if (weatherRain == true && shoeRain == true && res.conditions.indexOf('rain') != -1 && weatherTempTrans.indexOf('cold') != -1 && res.temperature.indexOf('cold') != -1){
-					console.log('weatherRain & shoeRain match + weatherCold & shoewCold ');
-					return true;
-				}
-				if (weatherRain == true && shoeRain == true && res.conditions.indexOf('rain') != -1 && res.temperature.indexOf('all') != -1){
-					console.log('weatherRain & shoeRain match + shoeAny');
-					return true;
-				}
-
-/**
-  * CLEAR & SHOE TEMP CONDITIONS
-*/
-				if (weatherClear == true && shoeClear == true && res.conditions.indexOf('clear') != -1 && weatherTempTrans.indexOf('hot') != -1 && res.temperature.indexOf('hot') != -1){
-					console.log('weatherClear & shoeClear match + weatherHot & shoeHot');
-					return true;
-				}
-				if (weatherClear == true && shoeClear == true && res.conditions.indexOf('clear') != -1 && weatherTempTrans.indexOf('warm') != -1 && res.temperature.indexOf('warm') != -1){
-					console.log('weatherClear & shoeClear match + weatherWarm & shoeWarm');
-					return true;
-				} 
-				if (weatherClear == true && shoeClear == true && res.conditions.indexOf('clear') != -1 && weatherTempTrans.indexOf('cool') != -1 && res.temperature.indexOf('cool') != -1){
-					console.log('weatherClear & shoeClear match + weatherCool & shoeCool');
-					return true;
-				} 
-				if (weatherClear == true && shoeClear == true && res.conditions.indexOf('clear') != -1 && weatherTempTrans.indexOf('cold') != -1 && res.temperature.indexOf('cold') != -1){
-					console.log('weatherClear & shoeClear match + weatherCold & shoewCold ');
-					return true;
-				} 
-				if (weatherClear == true && shoeClear == true && res.conditions.indexOf('clear') != -1 && res.temperature.indexOf('all') != -1){
-					console.log('weatherClear & shoeClear match + shoeALL');
-					return true;
-				} 
-
-/**
-  * SNOW & SHOE TEMP CONDITIONS
-*/
-				if (weatherSnow == true && shoeSnow == true && res.conditions.indexOf('snow') != -1 && weatherTempTrans.indexOf('hot') != -1 && res.temperature.indexOf('hot') != -1){
-					console.log('weatherSnow & shoeSnow match + weatherHot & shoeHot');
-					return true;
-				} 
-				if (weatherSnow == true && shoeSnow == true && res.conditions.indexOf('snow') != -1 && weatherTempTrans.indexOf('warm') != -1 && res.temperature.indexOf('warm') != -1){
-					console.log('weatherSnow & shoeSnow match + weatherWarm & shoeWarm');
-					return true;
-				}
-				if (weatherSnow == true && shoeSnow == true && res.conditions.indexOf('snow') != -1 && weatherTempTrans.indexOf('cool') != -1 && res.temperature.indexOf('cool') != -1){
-					console.log('weatherSnow & shoeSnow match + weatherCool & shoeCool');
-					return true;
-				} 
-				if (weatherSnow == true && shoeSnow == true && res.conditions.indexOf('snow') != -1 && weatherTempTrans.indexOf('cold') != -1 && res.temperature.indexOf('cold') != -1){
-					console.log('weatherSnow & shoeSnow match + weatherCold & shoewCold');
-					return true;
-				} 
-				if (weatherSnow == true && shoeSnow == true && res.conditions.indexOf('snow') != -1 && res.temperature.indexOf('all') != -1){
-					console.log('weatherSnow & shoeSnow match && shoeALL');
-					return true;
-				} 
-
-/**
-  * ALL CONDITION & SHOE TEMP CONDITIONS
-*/
-				// Conditions options: snow, rain, clear, any
-				// temp options: hot, warm, cool, cold, all 
-
-				if (res.conditions.indexOf('any') != -1 && weatherTempTrans.indexOf('hot') != -1 && res.temperature.indexOf('hot') != -1){
-					console.log('shoeAll + weatherHot & shoewHot ');
-					return true;
-				}
-				if (res.conditions.indexOf('any') != -1 && weatherTempTrans.indexOf('warm') != -1 && res.temperature.indexOf('warm') != -1){
-					console.log('shoeAll + weatherWarm & shoewWarm ');
-					return true;
-				}
-				if (res.conditions.indexOf('any') != -1 && weatherTempTrans.indexOf('cool') != -1 && res.temperature.indexOf('cool') != -1){
-					console.log('shoeAll + weatherCool & shoeCool');
-					return true;
-				}
-				if (res.conditions.indexOf('any') != -1 && weatherTempTrans.indexOf('cold') != -1 && res.temperature.indexOf('cold') != -1){
-					console.log('shoeAll + weatherCold & shoewCold ');
-					return true;
-				}
-				if (res.conditions.indexOf('any') != -1 && res.temperature.indexOf('all') != -1){
-					console.log('shoeAll + shoeAny');
-					return true;
-				}
-			} // eo Select filter
+			// All the shoes were showing in html before javascript loaded, so there was a blip
+			// hideShoes to true initialy, then one selectFilter is done, set hideShoes to false
+			// How did I find out? Use breakpoints in dev tools to see what was being loaded first
+			user.hideShoes = false;
 
 			return res;
 		}) // eo .then conditions
 		.then(function(res){
 
 /**
-======== ANIMATIONS =============
+============= ANIMATIONS =============
 */ 
 			
 			user.rain = false;
 			user.snow = false;
 			user.clear = false;
 			var weatherCond = res.conditions; 
+
+/*
+ * ===== WEATHER ANIMATION ===== 
+*/
+			if (weatherCond.includes('clear') && !weatherCond.includes('rain') && !weatherCond.includes('snow')) {
+				user.clear = true;
+			} else if (weatherCond.includes('snow')){
+		  		user.snow = true;
+		  	} else if (weatherCond.includes('rain')){
+		  		user.rain = true;
+		  	}
 /*
 ====== RAIN ANI ========
 * https://codepen.io/wpaix/pen/OVXymj
@@ -456,7 +336,7 @@
 * objects are fed continulously into conditional spawn
 * function uses this obj to append css prop to css & html template
 * clear cond is outside of loop bc we want to execute once
-* it is a ng show with svg in html already
+* it is a ng-show with svg in html already
 */ 
 
 			function Droplet(){};
@@ -479,7 +359,9 @@
 			var App = { numberOfDroplets: 30 };
 			var i = 0;
 
-			while( i < App.numberOfDroplets ) {    
+			if (user.rain === true) { 
+
+				while( i < App.numberOfDroplets ) {    
 
 				// create snowDroplet & add it onto object
 				var snowDroplet = new Droplet();
@@ -513,23 +395,13 @@
 			  		console.log('executing snow animation');
 			  	}
 			  	i++;
-			} // eo droplet loop
+			  } // eo droplet loop
+		    }
 
-/*
- * CONDITIONAL HERO IMAGE
-*/
-			if (weatherCond.includes('clear') && !weatherCond.includes('rain') && !weatherCond.includes('snow')) {
-				user.clear = true;
-			} else if (weatherCond.includes('snow')){
-		  		user.snow = true;
-		  	} else if (weatherCond.includes('rain')){
-		  		user.rain = true;
-		  	}
 
 /**
   * FUNCTION Clear, Rain, Snow Ani 
   * https://codepen.io/wpaix/pen/OVXymj
-  * 
 */
 		  	function executeRain(spawnDroplet){
 		    	$('.jumbotron').append('<div class="droplet"><div class="flying"></div><div class="splashing"></div></div>');
@@ -577,7 +449,7 @@
 			      });
 		  	}// EO execute snow 
 
-		})}// eo .then conditions & getWeather
-		getWeather(); // activates the GET darksky API, declaration down here because not enough time to retrieve databack
+		})})()// eo .then conditions & getWeather
+
 	}// eo userCtrl
 })();
