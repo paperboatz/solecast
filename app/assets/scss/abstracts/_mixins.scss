@@ -15,31 +15,67 @@
 	* used with _button.scss 
 */
 
-@mixin ghost-button($ghost-button-color, $ghost-button-height, $ghost-button-width, $ghost-button-border, $ghost-button-display) {
-  border: $ghost-button-border;
-  border-color: $ghost-button-color;
+
+// $med-blue, 45px, 100%, 2px solid, inline-block
+@mixin ghost-button($ghost-button-color, $ghost-button-height, 
+  $ghost-button-width, $ghost-button-border, $ghost-button-display, $ghost-button-optclr) {
+  
   color: $ghost-button-color;
-	display: $ghost-button-display;
-	height: $ghost-button-height;
+  height: $ghost-button-height;
+  width: $ghost-button-width;
+  border: $ghost-button-border;
+  display: $ghost-button-display;
+
+  border-color: $ghost-button-color;
 	line-height: $ghost-button-height;
 	margin-top: $ghost-button-height / 3;
+  text-transform: uppercase;
 	text-align: center;
   text-decoration: none;
-	width: $ghost-button-width;
+  font-size: type-scale(1);
+  font-family: $display-font-stack;
   -webkit-transition: .2s;
   -moz-transition: .2s;
   -o-transition: .2s;
    transition: .2s;
 
 	&:hover {
-		background: $ghost-button-color;
+    // background: $ghost-button-optclr; // i want this to be only case for the delete button 
+
+        @if $ghost-button-optclr == null {
+          background: $ghost-button-color;
+        } 
+        @else {
+          background: $ghost-button-optclr;
+          border-color: $ghost-button-optclr; 
+        }
     
      		@if $ghost-button-color == #FFFFFF {
       			color: #000000;
-      		}
-
+      	}
       	@else {
       			color: #FFFFFF;
-      		}
+      	}
   	}
 }
+
+// easier centering with glyphicon
+@mixin centering-btn(){
+  display: flex;
+  flex-direction: row;     /* make main axis horizontal (default setting) */
+  justify-content: center; /* center items horizontally, in this case */
+  align-items: center;     /* center items vertically, in this case */
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+
+
+

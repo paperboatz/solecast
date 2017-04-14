@@ -16,6 +16,31 @@
 	padding: 10px 10px;
 }
 
+
+/*
+====== SANDBOX BAR ====
+*/
+
+.sandbox-icon {
+	border: solid $mid-grey 1px; 
+	padding: 2px 4px;
+	margin-right: 4px;
+	display: inline-block;
+	background-color: #585858 ;
+}
+
+.sandboxBar {
+	background-color: rgba(0,0,0,0.75);
+	height: 25px;
+	position: absolute;
+	top: 0px;
+	padding: 0.5% 0 2% 0;
+	width: 100%;
+	text-align: center; 
+	color: white;
+}
+
+
 /*
 ====== Nav bar ====
 */
@@ -54,7 +79,6 @@ nav {
 		border-bottom: dotted 1px;
 	}
 
-
 	a  > .glyphicon-margin {
 		margin-right: 4px;
 	}
@@ -76,25 +100,6 @@ nav {
 	}
 } // eo nav
 
-
-	.sandbox-icon {
-		border: solid $mid-grey 1px; 
-		padding: 2px 4px;
-		margin-right: 4px;
-		display: inline-block;
-		background-color: #585858 ;
-	}
-
-	.sandboxBar {
-		background-color: rgba(0,0,0,0.75);
-		height: 25px;
-		position: absolute;
-		top: 0px;
-		padding: 0.5% 0 2% 0;
-		width: 100%;
-		text-align: center; 
-		color: white;
-	}
 
 /*
 ====== FOOTER ====

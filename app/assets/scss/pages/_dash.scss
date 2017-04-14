@@ -47,6 +47,13 @@
 		display: inline-block;
 	}
 
+	// creates width and position for button
+	.inv-block-editdelete{
+		width: 16%;
+		vertical-align: top;
+		padding-top: 3%;
+	}
+
 	.inv-block-img{
 		margin-left: 5%;
 	}
@@ -80,10 +87,20 @@
 		display: inline-block;
 	}
 
+	// Conditions
 	.inv-block-cond {
-		width: 25%;
+		width: 22%;
 		position: relative;
-		transform: translateY(10%);
+		transform: translateY(20%);
+		-ms-transform: translateY(20%); /* IE 9 */
+        -webkit-transform: rtranslateY(20%); /* Chrome, Safari, Opera */
+
+		span {
+			border-bottom: dotted 1px;
+			padding-bottom: 3px;
+			margin-bottom: 4px;
+			display: inline-block;
+		}
 
 		ul {
 			list-style: none;

@@ -473,6 +473,9 @@ h1, h2, h3, h4 {
 button {
   background-color: transparent; }
 
+ul {
+  padding-left: 0; }
+
 .jumbotron {
   background-color: transparent; }
 
@@ -743,6 +746,26 @@ footer {
   padding: 10px 10px; }
 
 /*
+====== SANDBOX BAR ====
+*/
+.sandbox-icon {
+  border: solid #999999 1px;
+  padding: 2px 4px;
+  margin-right: 4px;
+  display: inline-block;
+  background-color: #585858; }
+
+.sandboxBar {
+  background-color: rgba(0, 0, 0, 0.75);
+  height: 25px;
+  position: absolute;
+  top: 0px;
+  padding: 0.5% 0 2% 0;
+  width: 100%;
+  text-align: center;
+  color: white; }
+
+/*
 ====== Nav bar ====
 */
 nav .navbar {
@@ -775,23 +798,6 @@ nav .shoeicon {
   vertical-align: bottom; }
   nav .shoeicon:first-child path {
     fill: inherit; }
-
-.sandbox-icon {
-  border: solid #999999 1px;
-  padding: 2px 4px;
-  margin-right: 4px;
-  display: inline-block;
-  background-color: #585858; }
-
-.sandboxBar {
-  background-color: rgba(0, 0, 0, 0.75);
-  height: 25px;
-  position: absolute;
-  top: 0px;
-  padding: 0.5% 0 2% 0;
-  width: 100%;
-  text-align: center;
-  color: white; }
 
 /*
 ====== FOOTER ====
@@ -1314,90 +1320,133 @@ footer {
   40% {
     -webkit-transform: scale(1);
     transform: scale(1); } }
-.btn-standard {
-  background-color: #a8d7ff;
-  padding: 10px 70px;
-  border: thin solid black;
-  font-family: "Playfair Display", "Georgia", Serif; }
-
-/*
-	* used on add/edit page 
-	* should fit the width of the form
-*/
-.btn-add {
-  background-color: #a8d7ff;
-  padding: 10px 70px;
-  width: 100%;
-  border: thin solid black;
-  font-family: "Playfair Display", "Georgia", Serif;
-  font-size: 1.5em; }
-
 .ghost-btn-blue {
-  border: 2px solid;
-  border-color: #6897c5;
   color: #6897c5;
-  display: inline-block;
   height: 45px;
+  width: 100%;
+  border: 2px solid;
+  display: inline-block;
+  border-color: #6897c5;
   line-height: 45px;
   margin-top: 15px;
+  text-transform: uppercase;
   text-align: center;
   text-decoration: none;
-  width: 100%;
+  font-size: 1.333rem;
+  font-family: "Playfair Display", "Georgia", Serif;
   -webkit-transition: .2s;
   -moz-transition: .2s;
   -o-transition: .2s;
-  transition: .2s;
-  text-transform: uppercase;
-  font-size: 1.333rem;
-  font-family: "Playfair Display", "Georgia", Serif; }
+  transition: .2s; }
   .ghost-btn-blue:hover {
     background: #6897c5;
     color: #FFFFFF; }
 
-.ghost-btn-red {
-  border: 2px solid;
-  border-color: maroon;
-  color: maroon;
-  display: inline-block;
-  height: 45px;
-  line-height: 45px;
-  margin-top: 15px;
-  text-align: center;
-  text-decoration: none;
-  width: 100%;
-  -webkit-transition: .2s;
-  -moz-transition: .2s;
-  -o-transition: .2s;
-  transition: .2s;
-  text-transform: uppercase;
-  font-size: 1.333rem;
-  font-family: "Playfair Display", "Georgia", Serif; }
-  .ghost-btn-red:hover {
-    background: maroon;
-    color: #FFFFFF; }
-
 .ghost-btn-front {
-  border: 2px solid;
-  border-color: #00396b;
   color: #00396b;
-  display: inline-block;
   height: 30px;
+  width: 100%;
+  border: 2px solid;
+  display: inline-block;
+  border-color: #00396b;
   line-height: 30px;
   margin-top: 10px;
+  text-transform: uppercase;
   text-align: center;
   text-decoration: none;
-  width: 100%;
+  font-size: 1.333rem;
+  font-family: "Playfair Display", "Georgia", Serif;
   -webkit-transition: .2s;
   -moz-transition: .2s;
   -o-transition: .2s;
   transition: .2s;
-  text-transform: uppercase;
   font-size: 1rem;
-  line-height: 0;
-  font-family: "Playfair Display", "Georgia", Serif; }
+  line-height: 0; }
   .ghost-btn-front:hover {
     background: #00396b;
     color: #FFFFFF; }
+
+.ghost-btn-edit {
+  color: #6897c5;
+  height: 45px;
+  width: 100%;
+  border: 2px solid;
+  display: inline-block;
+  border-color: #6897c5;
+  line-height: 45px;
+  margin-top: 15px;
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1.333rem;
+  font-family: "Playfair Display", "Georgia", Serif;
+  -webkit-transition: .2s;
+  -moz-transition: .2s;
+  -o-transition: .2s;
+  transition: .2s;
+  display: flex;
+  flex-direction: row;
+  /* make main axis horizontal (default setting) */
+  justify-content: center;
+  /* center items horizontally, in this case */
+  align-items: center;
+  /* center items vertically, in this case */
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  margin-top: 0px; }
+  .ghost-btn-edit:hover {
+    background: #6897c5;
+    color: #FFFFFF; }
+
+.ghost-btn-delete {
+  color: #6897c5;
+  height: 45px;
+  width: 100%;
+  border: 2px solid;
+  display: inline-block;
+  border-color: #6897c5;
+  line-height: 45px;
+  margin-top: 15px;
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1.333rem;
+  font-family: "Playfair Display", "Georgia", Serif;
+  -webkit-transition: .2s;
+  -moz-transition: .2s;
+  -o-transition: .2s;
+  transition: .2s;
+  display: flex;
+  flex-direction: row;
+  /* make main axis horizontal (default setting) */
+  justify-content: center;
+  /* center items horizontally, in this case */
+  align-items: center;
+  /* center items vertically, in this case */
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center; }
+  .ghost-btn-delete:hover {
+    background: #ff0f37;
+    border-color: #ff0f37;
+    color: #FFFFFF; }
+
+.glyphicon.glyphicon-trash, .glyphicon-pencil {
+  padding-right: 5px;
+  top: 0; }
 
 /**
 ========= Range =========
@@ -1572,6 +1621,10 @@ footer {
     width: 70%; }
   .inv .inv-block {
     display: inline-block; }
+  .inv .inv-block-editdelete {
+    width: 16%;
+    vertical-align: top;
+    padding-top: 3%; }
   .inv .inv-block-img {
     margin-left: 5%; }
   .inv .img-dash-thumb {
@@ -1592,9 +1645,18 @@ footer {
   .inv .inv-block-brand {
     display: inline-block; }
   .inv .inv-block-cond {
-    width: 25%;
+    width: 22%;
     position: relative;
-    transform: translateY(10%); }
+    transform: translateY(20%);
+    -ms-transform: translateY(20%);
+    /* IE 9 */
+    -webkit-transform: rtranslateY(20%);
+    /* Chrome, Safari, Opera */ }
+    .inv .inv-block-cond span {
+      border-bottom: dotted 1px;
+      padding-bottom: 3px;
+      margin-bottom: 4px;
+      display: inline-block; }
     .inv .inv-block-cond ul {
       list-style: none;
       display: block;
