@@ -1,3 +1,5 @@
+
+// === over-ride bootstrap === 
 .navbar-default {
 	background-color: inherit;
 	border-color: transparent;
@@ -5,21 +7,14 @@
 	margin-left: 24px;
 }
 
-.navbar-default .navbar-nav > li > a  {
+.navbar-default .navbar-nav > li > a {
 	color: $med-blue;
-
+	fill: $med-blue; 
 }
 
 .nav > li > a {
 	padding: 10px 10px;
 }
-
-@media (min-width: 768px) {
-	.navbar-nav > li > a {
-		padding-bottom: 4px;
-	}
-}
-
 
 /*
 ====== Nav bar ====
@@ -59,13 +54,26 @@ nav {
 		border-bottom: dotted 1px;
 	}
 
-	.glyphicon-margin {
-		margin-right: 2px;
+
+	a  > .glyphicon-margin {
+		margin-right: 4px;
 	}
 
-	// .tagline-block {
- //  		margin-top: 7px;
-	// }
+	.glyphicon-margin {
+		margin-right: 2px;
+		width: 2rem;
+		height: 2rem;
+	}
+
+	.shoeicon {
+		width: inherit;
+		height: inherit;
+		vertical-align: bottom;
+
+		&:first-child path {
+			fill:inherit; // inherit a link color
+		}
+	}
 } // eo nav
 
 
@@ -111,7 +119,6 @@ footer {
 			padding-left: 5px;
 			line-height: line-height-scale(1);
 		}
-
 
 		.built > ul {
 		    list-style: none;

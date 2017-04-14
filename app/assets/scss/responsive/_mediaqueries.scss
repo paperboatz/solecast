@@ -248,3 +248,14 @@
 	}
 }
 
+
+
+// ====== BOOTSTRAP OVERRIDE =======
+
+@media (min-width: 768px) {
+	.navbar-nav > li > a {
+		padding-bottom: 4px;
+	}
+}
+
+

@@ -513,7 +513,7 @@ button {
   src: url("../fonts/glyphicons-halflings-regular.eot");
   src: url("../fonts/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/glyphicons-halflings-regular.woff") format("woff"), url("../fonts/glyphicons-halflings-regular.ttf") format("truetype"), url("../fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular") format("svg"); }
 /*
-====== GLOBAL ====
+ ====================  GLOBAL  ==================== 
 */
 label {
   font-weight: 700;
@@ -589,6 +589,8 @@ nav a {
     color: #6897c5; }
   nav a:hover {
     color: #00396b; }
+    nav a:hover .shoeicon:first-child path {
+      fill: #00396b; }
   nav a:focus {
     color: #a8d7ff; }
   nav a:active {
@@ -734,14 +736,12 @@ footer {
   margin-left: 24px; }
 
 .navbar-default .navbar-nav > li > a {
-  color: #6897c5; }
+  color: #6897c5;
+  fill: #6897c5; }
 
 .nav > li > a {
   padding: 10px 10px; }
 
-@media (min-width: 768px) {
-  .navbar-nav > li > a {
-    padding-bottom: 4px; } }
 /*
 ====== Nav bar ====
 */
@@ -763,8 +763,18 @@ nav .profile-unlogged {
   color: rgba(153, 153, 153, 0.2); }
 nav .active {
   border-bottom: dotted 1px; }
+nav a > .glyphicon-margin {
+  margin-right: 4px; }
 nav .glyphicon-margin {
-  margin-right: 2px; }
+  margin-right: 2px;
+  width: 2rem;
+  height: 2rem; }
+nav .shoeicon {
+  width: inherit;
+  height: inherit;
+  vertical-align: bottom; }
+  nav .shoeicon:first-child path {
+    fill: inherit; }
 
 .sandbox-icon {
   border: solid #999999 1px;
@@ -1823,5 +1833,8 @@ body.intro-page {
 @media only screen and (min-width: 880px) and (max-width: 1050px) {
   .block-solecast .block-temp {
     margin-bottom: 15px; } }
+@media (min-width: 768px) {
+  .navbar-nav > li > a {
+    padding-bottom: 4px; } }
 
 /*# sourceMappingURL=main.css.map */

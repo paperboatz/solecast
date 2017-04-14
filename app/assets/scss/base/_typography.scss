@@ -8,7 +8,7 @@
 // font-weight: weight-scale(heavy) - getting mapping of weight-scale 
 
 /*
-====== GLOBAL ====
+ ====================  GLOBAL  ==================== 
 */
 
 label {
@@ -31,18 +31,17 @@ a {
 	}
 	&:focus {
 		color: $color-focus;
-
 	}
 	&:active {
 		color: $color-active;
 	}
 }
 
+
 body {
 	@include type-setting(0);
 	font-family: $text-font-stack;
 }
-
 
 h1 {
 	margin: 0 0 2px 0;	
@@ -104,6 +103,9 @@ nav {
 		}
 		&:hover {
 			color: $dark-blue;
+		  .shoeicon:first-child path {
+		    fill: $dark-blue;
+		  }
 		}
 		&:focus {
 			color: $light-blue;

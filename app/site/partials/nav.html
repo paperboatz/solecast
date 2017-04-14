@@ -1,9 +1,12 @@
 
+<!--  ====================  Sandbox bar ==================== -->
+<!-- Hidden when logged in -->
 <div class='sandboxBar' ng-show='ctrl.sandboxBar'> 
-		<div class='sandbox-icon'> SANDBOX MODE </div> 
-		Play around or <a ng-click='ctrl.login()''>login</a> to save your own shoes.
+		<div class='sandbox-icon'>SANDBOX MODE</div>Play around or <a ng-click='ctrl.login()''>login</a> to save your own shoes.
 </div>
 
+
+<!--  ==================== NAV BAR ==================== -->
 <nav class="navbar navbar-default">
 
   <div class="container-fluid">
@@ -16,7 +19,7 @@
         <span class="icon-bar"></span>
       </button>
    
-   		<!-- Logo gets hidden when shown when clicked -->
+   		<!-- Logo is hidden when shown when clicked -->
       <div class='navbar-brand loader' ng-if='!ctrl.hideNavAni' ng-click='ctrl.logo()'>
 			<?xml version="1.0" encoding="utf-8"?>
 			<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
@@ -139,9 +142,23 @@
     </div>
 
     <div class="collapse navbar-collapse" id="bar-collapse">
-
       <ul class="nav navbar-nav navbar-right">
-        <li><a title='Shoes' ui-sref="user.dash" ui-sref-active='active'><span class='glyphicon glyphicon-plus glyphicon-margin'></span>Shoes</a></li>
+        
+        <li><a title='Shoes' ui-sref="user.dash" ui-sref-active='active'><span class='glyphicon-margin'><?xml version="1.0" encoding="utf-8"?>
+		<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+		<svg version="1.1" id="sneaker" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  x="0px" y="0px" width="32px" height="32px" viewBox="59.5 59.5 32 32" class='shoeicon' enable-background="new 59.5 59.5 32 32" xml:space="preserve">
+		<path  fill="#A5ADB5" d="M89.075,82.452c-0.164-1.664-0.2-1.265-0.381-1.573l-0.434-0.324c0,0-0.144-0.706-1.03-1.193v-0.002l0,0
+			h-0.002c-0.886-0.486-1.86-0.721-2.078-0.759c-0.216-0.035-1.537-0.668-1.537-0.668l0,0l-0.99-0.725
+			c0.018-0.242-0.841-0.474-1.45-0.53l-0.38-0.31l-1.445-0.823c0,0-0.002,0-0.005,0l0.005,0l-0.593-0.852
+			c-0.139-0.112-0.489-0.364-0.791-0.328l-0.518-0.532l-0.938-0.674c-0.029-0.003,0.09-0.254,0.09-0.254l-0.393-0.434
+			c0,0-0.018,0.021-0.044,0.053l-0.194-0.342l-0.429-0.153l0.174-0.208l-0.434-0.579l-0.084,0.077l-0.278-0.42l-0.271-0.145
+			l-0.696-1.151c0.344-3.093-0.931-4.292-0.931-4.292l-1.24-0.072l0.005,0.009c-0.242-0.412-0.578-0.785-1.043-0.931
+			c-1.266-0.397-2.278,0.579-3.182,1.555c-0.904,0.976-0.976,1.049-0.976,1.049s-0.253,0.18-0.217,0.813l0.168,0.068
+			c-0.515,0.017-0.794,0.074-1.11,0.041c0,0-1.03-0.217-1.608,0.904c0,0-0.814-0.415-1.284,0.615l-0.271,4.232v0.433
+			c0,0,0.145,2.459,0.289,3.201c0.145,0.74-0.139-0.035-0.159,0.276c-0.058,0.9-0.142,2.667,0.086,2.816
+			c0.307,0.197,1.763,1.098,5.335,2.188c3.495,1.063,5.103,2.208,6.492,2.426l-0.001,0.001C76.205,85.494,89.496,86.764,89.075,82.452
+			z"/>
+		</svg></span>Shoes</a></li>
 
         <li><a title='Settings' ui-sref="user.settings" ui-sref-active='active'>
 		<span class='glyphicon glyphicon-cog glyphicon-margin'></span>Settings</a></li>
@@ -149,8 +166,7 @@
         <li><a title='Login' ng-if="!ctrl.auth.isAuthenticated" ng-click='ctrl.login()'><span class='glyphicon glyphicon-user profile-unlogged glyphicon-margin'></span>Login</a></li>
 
         <li><a title='Logout' ng-if="ctrl.auth.isAuthenticated" ng-click='ctrl.logout()'>
-		<span class='glyphicon glyphicon-user glyphicon-margin'></span> Logout 
-		</a></li>
+		<span class='glyphicon glyphicon-user glyphicon-margin'></span>Logout</a></li>
 
       </ul>
     </div><!-- /.navbar-collapse -->
@@ -158,11 +174,13 @@
 </nav>
 
 
-<!-- put in another ui-view for nested views -->
+
+<!-- ui-view for nested views -->
 <div ui-view=""></div>
 
-<!-- ===== FOOTER ==== -->
 
+
+<!-- ==================== FOOTER ==================== -->
 <footer> 
 	<div class='footer-cont clearfix'> 
 			<div class='col-sm-3 footer-hide'>
@@ -196,20 +214,9 @@
 			<div class='col-sm-3 footer-hide'>
 				<h4> NAVAGATION </h4>
 				<ul> 
-					<li> 
-						<a class='nav-right-link' ui-sref="user.front_page"> 
-							Home 
-						</a> 
-					</li>
-					<li> 
-						<a class='nav-right-link' ui-sref="user.dash">
-							Shoes 
-						</a> 
-					</li>
-					<li> <a class='nav-right-link' ui-sref="user.settings"> 
-							Settings 
-						</a>
-					</li>
+					<li><a class='nav-right-link' ui-sref="user.front_page">Home</a></li>
+					<li><a class='nav-right-link' ui-sref="user.dash">Shoes</a></li>
+					<li><a class='nav-right-link' ui-sref="user.settings">Settings</a></li>
 				</ul>
 			</div> <!-- eo col 3 Navigation-->
 
@@ -219,22 +226,14 @@
 					<li> 
 						<span class='glyphicon glyphicon-envelope' aria-hidden="true"> </span>
 						<span class="sr-only">email</span> 
-						<a href="mailto:tiff@tiffinyli.com?Subject=Solecast%20Question" target="_top" title='Email'>Tiffiny Li</a> 
+						<a href="mailto:tiffcodes@gmail.com?Subject=Solecast%20Question" target="_top" title='Email'>Tiffiny Li</a> 
 					</li>
-					<li>
-						<a href='http://tiffinyli.com' target="_blank" title='Portfolio'>tiffinyli.com</a> 
-					</li> 
-					<li>
-						<a href='http://twitter.com/tiffinyli' target="_blank" title='Twitter'>@tiffinyli</a> 
-					</li> 
-					<li> 
-						<a href='http://github.com/paperboatz' target="_blank" title="Github">Github</a>
-					</li>
+					<li><a href='http://tiffinyli.com' target="_blank" title='Portfolio'>tiffinyli.com</a></li> 
+					<li><a href='http://twitter.com/tiffinyli' target="_blank" title='Twitter'>@tiffinyli</a></li> 
+					<li><a href='http://github.com/paperboatz' target="_blank" title="Github">Github</a></li>
 				</ul>
 
-				<div class='portfolio'>
-					© 2017 Tiffiny Li. All Rights Reserved.
-				</div>
+				<div class='portfolio'>© 2017 Tiffiny Li. All Rights Reserved.</div>
 			</div> <!-- eo footer col 4 contact me  -->
 
 			<div class='footer-mobile'> © 2017 <a href='http://tiffinyli.com' target='_blank'>Tiffiny Li</a>. All Rights Reserved.</div> 
