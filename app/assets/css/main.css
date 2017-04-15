@@ -479,10 +479,6 @@ ul {
 .jumbotron {
   background-color: transparent; }
 
-.btn {
-  padding: 2.1px 4px;
-  border-radius: 0px; }
-
 .clearfix:before,
 .clearfix:after {
   content: "";
@@ -544,7 +540,7 @@ body {
 
 h1 {
   margin: 0 0 2px 0;
-  font-size: 1.777rem;
+  font-size: 2.368rem;
   line-height: 2.5rem;
   font-family: "Playfair Display", "Georgia", Serif; }
 
@@ -732,6 +728,20 @@ footer {
   font-family: "Playfair Display", "Georgia", Serif;
   color: #999999; }
 
+/* 
+* ==== MODAL TEXT =====
+*/
+.text-modal-header {
+  text-align: center;
+  color: white;
+  font-size: 1.333rem;
+  line-height: 1.875rem;
+  text-transform: uppercase; }
+
+.text-modal-body {
+  font-size: 1.333rem;
+  line-height: 1.875rem; }
+
 .navbar-default {
   background-color: inherit;
   border-color: transparent;
@@ -836,6 +846,9 @@ footer {
     margin-left: 5px; }
   footer .footer-mobile {
     display: none; }
+
+.a0-collapse-social {
+  display: none; }
 
 /*
 ========= INTRO PAGE =====
@@ -1283,6 +1296,19 @@ footer {
   24% {
     fill: #00396b; } }
 /*
+========= CHECKMARK =====
+*/
+.checkmarkbounce {
+  animation: 0.5s checkmarkbounce 1 linear; }
+
+@keyframes checkmarkbounce {
+  0% {
+    font-size: 50%; }
+  95% {
+    font-size: 110%; }
+  100% {
+    font-size: 100%; } }
+/*
 ========= LOADER ANIMATION =====
 // credit: https://codepen.io/maplessmann/pen/OXYgYQ
 */
@@ -1472,6 +1498,31 @@ footer {
     top: 40%;
     left: 45%; }
 
+.modal-content {
+  border: none;
+  background-color: transparent;
+  border-radius: 0px; }
+  .modal-content .modal__body {
+    padding: 0px 30px 30px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px; }
+    .modal-content .modal__body div {
+      padding-top: 10px;
+      text-align: center; }
+
+.modal__head {
+  padding-top: 30px;
+  padding-bottom: 10px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  background-color: #6897c5;
+  border-bottom: solid 1px #999999; }
+  .modal__head .glyphicon-ok {
+    color: #a8d7ff;
+    margin-right: 5px; }
+  .modal__head + div, .modal__head button {
+    background-color: #ededed; }
+
 .centered {
   position: relative;
   left: 5%;
@@ -1596,6 +1647,13 @@ footer {
     position: relative;
     top: 43%; }
 
+.input-group {
+  z-index: 0; }
+
+.searchBtn {
+  border-radius: 0px;
+  padding: 6.5px 12px; }
+
 .block-opt {
   background-color: white; }
   .block-opt .block-mid {
@@ -1610,8 +1668,6 @@ footer {
     display: inline; }
     .block-opt .block-fltr-wrap .block-fltr-width {
       padding-top: 1.875rem; }
-    .block-opt .block-fltr-wrap .form-control {
-      height: 25px; }
 
 .inv {
   background-color: #ededed !important; }

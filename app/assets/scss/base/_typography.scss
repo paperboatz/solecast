@@ -45,7 +45,7 @@ body {
 
 h1 {
 	margin: 0 0 2px 0;	
-	@include type-setting(2);
+	@include type-setting(3);
 	font-family: $display-font-stack;
 }
 
@@ -267,3 +267,18 @@ footer {
 	color: $mid-grey;
 }
 
+/* 
+* ==== MODAL TEXT =====
+*/
+
+.text-modal-header {
+	text-align: center;
+	color: white;
+	@include type-setting(1);
+	text-transform: uppercase;
+}
+
+
+.text-modal-body{
+  @include type-setting(1);
+}

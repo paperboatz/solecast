@@ -1,7 +1,19 @@
 //For user-dash.html
 
+// ==== Bootstrap Override ===== 
 
-// top block 
+
+.input-group {
+   z-index: 0;
+}
+
+// override-boottrap btn search
+.searchBtn {
+	border-radius: 0px;
+	padding: 6.5px 12px;
+}
+
+// ==== TOP BLOCK ===== 
 .block-opt {
 	background-color: white;
 	
@@ -25,14 +37,11 @@
 			padding-top: line-height-scale(1);
 		}
 
-		.form-control {
-			height: 25px;
-		}
 	} //eo block-filtr-width
 }//eo block-opt
 
 
-// inventory of shoes
+// ==== INVENTORY OF SHOES ==== 
 .inv {
 
 	background-color: rgb(237, 237, 237) !important;

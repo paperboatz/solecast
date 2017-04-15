@@ -8,14 +8,14 @@
 			<div class='text-inv-pgheader'> 
 				<span class='text-shoe-count'> Shoe Closet </span> <br> You have {{ctrl.numShoes}} pairs of shoes <br>
 				<span class='small-text'> Shoe Level: {{ctrl.level}} </span>
-				<button class='ghost-btn-blue' ng-click='ctrl.addShoeBtn()'> Add Shoe </a> </button> 
+				<button class='ghost-btn-blue' ng-click='ctrl.addShoeBtn()'>Add Shoe</a></button> 
 
 				<div class='block-fltr-wrap'> 
 				  <div class="block-fltr-width">
 				    <div class="input-group">
-				      <input type="text" class="form-control" placeholder="Search Shoes..." ng-model='ctrl.search'>
+				      <input type="text" class='form-control' placeholder="Search shoes..." ng-model='ctrl.search'>
 				      <span class="input-group-btn">
-				        <button class="btn btn-default" type="button"> <span class='glyphicon glyphicon-search'> </span> </button>
+				        <button class="btn searchBtn btn-default" type="button"> <span class='glyphicon glyphicon-search'> </span> </button>
 				      </span>
 				    </div>
 				  </div>
@@ -97,8 +97,8 @@
 			</div>
 		</div> 
 
-		<div class='noshoe-dash-block' ng-show='results.length == 0'> 
-			You returned no shoes. Please add shoe or search again. 
+		<div class='noshoe-dash-block' ng-show='results.length == 0'>
+			No shoes were found with your search parameters. Search again or add a shoe.
 		</div>
 	</div> <!-- eo clearfix -->
 </div> <!-- eo inv -->
@@ -108,6 +108,36 @@
 	You have no shoes. Add Shoe to start your closet.
 </div> 
 
+<!-- MODAL -->
+
+<div id="myModal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class='modal__head text-modal-header'><span class='glyphicon glyphicon-ok checkmarkbounce'></span>Shoe added to closet</div>
+
+      <div class='modal__body'> <div class="text-modal-body">What's next?</div>
+        <button class='ghost-btn-blue' ng-click="ctrl.modal('user.front_page')">Check your Solecast</button>
+        <button class='ghost-btn-blue addShoeBtn' ng-click="ctrl.modal('user.add_shoe')">Add more shoes</button>
+        <button class='ghost-btn-blue solecastBtn' data-dismiss="modal">Admire your shoe closet</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LOADER TO FRONT PAGE -->
+<div class='icon-loader icon-loader-intro' ng-show='ctrl.loader'>  
+	<div class='pulse'> 
+		<div class='bounce1'> 
+			<img class='loader-sm' ng-src='{{ctrl.rainSvg}}'>
+		 </div>
+		<div class='bounce2'>
+			<img class='loader-sm' ng-src='{{ctrl.snowSvg}}'>
+		</div>
+		<div class='bounce3'>
+			<img class='loader-sm' ng-src='{{ctrl.clearSvg}}'>
+		</div>
+	</div>
+</div>
 
 
 

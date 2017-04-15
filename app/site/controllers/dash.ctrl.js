@@ -14,7 +14,14 @@
 
 		user.editShoe = editShoe;
 		user.deleteShoe = deleteShoe;
+		user.modal= modal;
 		user.level= "";
+
+		//Loader
+		user.loader = false;
+		user.rainSvg = '../../assets/img/conditions_svg/raincondWhite.svg';
+		user.snowSvg = '../../assets/img/conditions_svg/snowcondWhite.svg';
+		user.clearSvg = '../../assets/img/conditions_svg/clearcondWhite.svg';
 
 /**
 =============== PRELOADING IMAGES ===============
@@ -160,10 +167,30 @@
 =============== DELETE SHOE ===============
 */
 
-		function deleteShoe(shoeId){
-				console.log('deleted function is triggered');
-				ShoeSrv.deleteShoe(shoeId);
-		} //eo delete product
+	function deleteShoe(shoeId){
+		console.log('deleted function is triggered');
+		ShoeSrv.deleteShoe(shoeId);
+	} //eo delete product
+
+
+
+/**
+=============== Modal Routing ===============
+*/
+	// manual hide & go to page instead of using angular & bootstrap built in attr
+	// ani would freeze bc it was too fast to go to next page
+	function modal(page){
+		// manually hide model
+		$('#myModal').modal('hide');
+		// once hidden event is finished, then go to the page
+		$('#myModal').on('hidden.bs.modal', function (e) {
+		  console.log(page);
+		  user.loader = true;
+		  $state.go(page);
+
+		})
+	}
+		
 
 
 	}// eo userCtrl

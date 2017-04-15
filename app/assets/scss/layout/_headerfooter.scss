@@ -161,7 +161,12 @@ footer {
 	}
 }//eo footer
 
+// ===== 0AUTH OVERRIDE====
 
+// no google log in 
+.a0-collapse-social {
+  display: none;
+}
 
 
 
