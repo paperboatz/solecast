@@ -38,31 +38,11 @@
 		var weatherArray = [];
 		var weatherTempArray = [];
 
-/**
-====== Change Thumbnail Colors =====
-*/
 		ShoeSrv.getShoes()
 			.then (function(res){
 				console.log(res);
 				user.allShoeData = res;
 				return res;
-		})
-		.then(function(result){
-
-			// Changing the thumbnail colors
-			for (var i = 0; i < result.length; i++ ) {
-				if (result[i].colors[0] == "#009DC1"){
-					result[i].colors[0] = 'transparent';
-				}
-				if (result[i].colors[1] == "#93013C"){
-					result[i].colors[1] = 'transparent';
-				} 
-				if (result[i].colors[2] == "#804615"){
-					result[i].colors[2] = 'transparent';
-				}
-			}
-
-			return result;
 		});
 
 		$scope.$watch(function(){

@@ -1656,6 +1656,8 @@ footer {
 
 .block-opt {
   background-color: white; }
+  .block-opt .block-opt-mid {
+    background-color: #ededed; }
   .block-opt .block-mid {
     position: relative; }
   .block-opt .block-opt-center {
@@ -1670,7 +1672,7 @@ footer {
       padding-top: 1.875rem; }
 
 .inv {
-  background-color: #ededed !important; }
+  background-color: white !important; }
   .inv .inv-center {
     position: relative;
     margin: auto;
@@ -1692,14 +1694,14 @@ footer {
       position: relative;
       top: 30px;
       width: 25rem; }
+      .inv .inv-block-pos .inv-block-desc div {
+        margin-bottom: 1px; }
     .inv .inv-block-pos .inv-clr {
       display: inline-block; }
   .inv .inv-repeat-block {
     margin-top: 1.25rem;
     border-bottom: thin solid black;
     padding-bottom: 2.5rem; }
-  .inv .inv-block-brand {
-    display: inline-block; }
   .inv .inv-block-cond {
     width: 22%;
     position: relative;

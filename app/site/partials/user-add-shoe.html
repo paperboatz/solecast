@@ -49,13 +49,13 @@
 						</select>
 					</div>
 					<div class='frm-clr-picker-sm' ng-show='ctrl.showOneColor()'> 
-						 <input class='frm-clr-picker-lg' type="color" name="favcolor" ng-model='ctrl.firstColor' value="ctrl.firstColor">
+						 <input class='frm-clr-picker-lg' type="color" name="favcolor" ng-model='ctrl.firstColor'>
 					</div>
 					<div class='frm-clr-picker-sm' ng-show='ctrl.showTwoColor()'>
-						<input class='frm-clr-picker-lg' type="color" name="favcolor" ng-model='ctrl.secondColor' value="ctrl.secondColor">
+						<input class='frm-clr-picker-lg' type="color" name="favcolor" ng-model='ctrl.secondColor' >
 					</div>
 					<div class='frm-clr-picker-sm' ng-show='ctrl.showThreeColor()'> 
-						<input class='frm-clr-picker-lg' type="color" name="favcolor" ng-model='ctrl.thirdColor'  value="ctrl.thirdColor"> 
+						<input class='frm-clr-picker-lg' type="color" name="favcolor" ng-model='ctrl.thirdColor'> 
 					</div>
 					<p class="error" ng-show="shoeFrm.color.$invalid && shoeFrm.$submitted"> Please Choose at Least 1 Color </p>
 				</div>

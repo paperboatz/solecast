@@ -88,58 +88,29 @@
 		})
 		.then(function(result){
 
-			var numShoes = result.length;
+			console.log(user.allShoeData);
+
 			user.numShoes = result.length;
+			var numShoes = user.numShoes; 
 
-/**
-  * Limiting Thumbnail Colors
-*/			
-			for (var i = 0; i < result.length; i++ ) {
+			// Creating Shoe Levels based on how many shoes we have
+			// the level coincide with levelName's index
+			// by using Math.Floor, we can create ranges. 
+			var levelNames = [
+				'Barefoot Peasant', 'Casual Wearer', 'Two Foot Decorator', 'Closet Stuffer', 'Shoedius',
+				'Foot Fiend', 'Shoe Freak', 'Shoedavor', 'Shoe Hog', 'Shoe Hore', 
+				'Shoephile', 'Shoe Guru', 'Shoeniac', 'Shoemasty', 'The Grandmaster Shoester'
+			]
 
-				if (result[i].colors[0] === '#009DC1'){
-					console.log(result[i].colors[0]);
-					result[i].colors[0] = '#EDEDED';
-				}
-				if (result[i].colors[1] === '#93013C'){
-					result[i].colors[1] = '#EDEDED';
-				} 
-				if (result[i].colors[2] === '#804615'){
-					result[i].colors[2] = '#EDEDED';
-				} 
+			function shoelvl(numShoes){
+				var level = Math.floor(numShoes / 4);
+				console.log(level);
+				if (numShoes > 60) {level = levelNames.length}
+				return user.level = levelNames[level];
 			}
 
-/**
-  * Shoe level
-*/
-			if (user.numShoes > 75){
-				user.level = 'Shoemniac';
-			} else if (user.numShoes > 60){
-				user.level = 'Shoe Guru';
-			} else if (user.numShoes > 50){
-				user.level = 'Shoephile';
-			} else if (user.numShoes > 45){
-				user.level = 'Shoe Hore';
-			} else if (user.numShoes > 40){
-				user.level = 'Shoe Hog';
-			} else if (user.numShoes > 30){
-				user.level = 'Shoedavor';
-			} else if (user.numShoes > 25){
-				user.level = 'Shoe Freak';
-			} else if (user.numShoes > 20){
-				user.level = 'Foot Fiend';
-			} else if (user.numShoes > 15){
-				user.level = 'Shoedius';
-			} else if (user.numShoes > 10){
-				user.level = 'Closet Stuffer';
-			} else if (user.numShoes > 5){
-				user.level = 'Two Foot Decorator';
-			} else if (user.numShoes > 2){
-				user.level = 'Casual Wearer';
-			} else {
-				user.level = 'Barefoot Peasant';
-			}
+			shoelvl(numShoes);
 
-			console.log(result.length);
 			return result;
 		});
 
@@ -187,11 +158,10 @@
 		  console.log(page);
 		  user.loader = true;
 		  $state.go(page);
-
 		})
 	}
 		
 
 
-	}// eo userCtrl
+  }// eo userCtrl
 })();

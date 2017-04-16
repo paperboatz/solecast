@@ -22,7 +22,7 @@
 		shoeVm.pickColor;
 		shoeVm.firstColor = '#009DC1';
 		shoeVm.secondColor = '#93013C';
-		shoeVm.thirdColor = '#804615';
+		shoeVm.thirdColor = '#FFB6C1';
 
 		//Shoe types drop down label
 		shoeVm.types = [
@@ -43,9 +43,31 @@
 			{label:'3',value:'3'}
 		];
 
-		// If user is logged in (token is in local storage)
-		// then set the user_id to token
-		// if no token (not logged in, sandbox mode), fill in the userId with "notLoggedIn"
+
+/**
+=============== COLOR THUMBNAILS ===============
+*/
+		// Color Thumbnail Drop Down
+		// Depending on which option, how many thumbails are shown
+		shoeVm.showOneColor = function(){
+			if (shoeVm.pickColor >= 1)
+				return true;
+		}
+		shoeVm.showTwoColor = function(){
+			if (shoeVm.pickColor >= 2)
+				return true;
+		}
+		shoeVm.showThreeColor = function(){
+			if (shoeVm.pickColor == 3)
+				return true;
+		}
+
+/**
+=============== ADDING IDENTIFYING TOKEN ===============
+*/
+	// If user is logged in (token is in local storage)
+	// then set the user_id to token
+	// if no token (not logged IN sandbox mode), fill in the userId with "notLoggedIn"
 		if (store.get('profile')) {
 			shoeVm.profile = store.get('profile');
 			shoeVm.user_id = shoeVm.profile.user_id;
@@ -56,8 +78,9 @@
 		}
 
 /**
-=============== GET ALL SHOE ===============
+=============== GET SHOES ===============
 */
+
 		ShoeSrv.getShoes()
 			.then (function(res){
 				console.log(res);
@@ -66,80 +89,49 @@
 		});
 
 
-		// Color Thumbnail Drop Down
-		// Depending on which option, how many color thumbail shows
-		shoeVm.showOneColor = function(){
-			if (shoeVm.pickColor >= 1) {
-				return true;
-			} else { 
-				return false;
-			}
-		}
-
-		shoeVm.showTwoColor = function(){
-			if (shoeVm.pickColor >= 2) {
-				return true;
-			} else { 
-				return false;
-			}
-		}
-
-		shoeVm.showThreeColor = function(){
-			if (shoeVm.pickColor == 3) {
-				return true;	
-			} else { 
-				return false;
-			}
-		}
-
 /**
 =============== ADD SHOE ===============
 */
 
 		function addShoe(){
 
+			console.log('shoe added')
+
+		  	var colorsArray = [];
 			var tempArray = [];
 			var condArray = [];
-			var colorsArray = [];
+
+			// Color picker //
+
+			// Adding thumbnail colors
+			// Adding only the amount that was submitted by label value
+			  if (shoeVm.pickColor === '1'){
+			      colorsArray = [shoeVm.firstColor];
+			  } else if (shoeVm.pickColor === '2') {
+			      colorsArray = [shoeVm.firstColor, shoeVm.secondColor];
+			  } else {
+	     		  colorsArray = [shoeVm.firstColor, shoeVm.secondColor, shoeVm.thirdColor];
+			  }
 
 			// conditions to keywords // 
 
-			if (shoeVm.any == true){
-				condArray.push('snow');
-				condArray.push('rain');
-				condArray.push('clear');
+			if (shoeVm.any){
+				condArray = ['snow', 'rain', 'clear'];
 			} else {
-				if (shoeVm.snow == true){
-				condArray.push('snow')
-				}
-				if (shoeVm.rain == true){
-				condArray.push('rain')
-				}
-				if (shoeVm.clear == true){
-				condArray.push('clear')
-				}
+				if (shoeVm.snow){ condArray.push('snow') }
+				if (shoeVm.rain){ condArray.push('rain') }
+				if (shoeVm.clear){ condArray.push('clear') }
 			}
 
 			// temperature to keywords // 
 			
-			if (shoeVm.all == true){
-				tempArray.push('hot');
-				tempArray.push('warm');
-				tempArray.push('cool');
-				tempArray.push('cold');
+			if (shoeVm.all){
+				tempArray = ['hot', 'warm', 'cool', 'cold'];
 			} else {
-				if (shoeVm.hot == true){
-					tempArray.push('hot')
-				}
-				if (shoeVm.warm == true){
-					tempArray.push('warm')
-				}
-				if (shoeVm.cool == true){
-					tempArray.push('cool')
-				}
-				if (shoeVm.cold == true) {
-					tempArray.push('cold')
-				}
+				if (shoeVm.hot){ tempArray.push('hot') }
+				if (shoeVm.warm){ tempArray.push('warm') }
+				if (shoeVm.cool){ tempArray.push('cool') }
+				if (shoeVm.cold){ tempArray.push('cold') }
 			}
 			
 			var shoes = {
@@ -149,7 +141,7 @@
 				description: shoeVm.description,
 				conditions: condArray,
 				temperature: tempArray,
-				colors: [shoeVm.firstColor, shoeVm.secondColor, shoeVm.thirdColor],
+				colors: colorsArray,
 				userid: shoeVm.user_id
 			};
 
@@ -164,54 +156,45 @@
 =============== UPDATE SHOE ===============
 */
 		function updateShoe(){
-
-			console.log('clicked updating Shoe');
 			
+			console.log('shoe updated')
+
 			var tempArray = [];
 			var condArray = [];
 			var colorsArray = [];
 
 /**
-  * Conditions convert to keywords 
+  * Color picker
 */
-
-			if (shoeVm.cond.any == true){
-				condArray.push('snow');
-				condArray.push('rain');
-				condArray.push('clear');
+			  if (shoeVm.pickColor === '1'){
+			      colorsArray = [shoeVm.firstColor];
+			  } else if (shoeVm.pickColor === '2') {
+			      colorsArray = [shoeVm.firstColor, shoeVm.secondColor];
+			  } else {
+	     		  colorsArray = [shoeVm.firstColor, shoeVm.secondColor, shoeVm.thirdColor];
+			  }
+/**
+  * Conditions convert to keywords 
+*/	
+			if (shoeVm.cond.any){
+				condArray = ['snow', 'rain', 'clear'];
 			} else {
-				if (shoeVm.cond.snow == true){
-				condArray.push('snow')
-				}
-				if (shoeVm.cond.rain == true){
-				condArray.push('rain')
-				}
-				if (shoeVm.cond.clear == true){
-				condArray.push('clear')
-				}
-			} 
+				if (shoeVm.cond.snow){ condArray.push('snow') }
+				if (shoeVm.cond.rain){ condArray.push('rain') }
+				if (shoeVm.cond.clear){ condArray.push('clear') }
+			}
 
 /**
   * Temperature convert to keywords 
 */
-			if (shoeVm.temp.all == true){
-				tempArray.push('hot');
-				tempArray.push('warm');
-				tempArray.push('cool');
-				tempArray.push('cold');
+
+			if (shoeVm.temp.all){
+				tempArray = ['hot', 'warm', 'cool', 'cold'];
 			} else {
-				if (shoeVm.temp.hot == true){
-					tempArray.push('hot')
-				}
-				if (shoeVm.temp.warm == true){
-					tempArray.push('warm')
-				}
-				if (shoeVm.temp.cool == true){
-					tempArray.push('cool')
-				}
-				if (shoeVm.temp.cold == true) {
-					tempArray.push('cold')
-				}
+				if (shoeVm.temp.hot){ tempArray.push('hot') }
+				if (shoeVm.temp.warm){ tempArray.push('warm') }
+				if (shoeVm.temp.cool){ tempArray.push('cool') }
+				if (shoeVm.temp.cold){ tempArray.push('cold') }
 			}
 
 
@@ -222,7 +205,7 @@
 				description: shoeVm.description,
 				conditions: condArray,
 				temperature: tempArray,
-				colors: [shoeVm.firstColor, shoeVm.secondColor, shoeVm.thirdColor],
+				colors: colorsArray,
 				userid: shoeVm.user_id
 			};
 
@@ -240,8 +223,6 @@
 			ShoeSrv.getShoe($stateParams.shoeId)
 			
 			.then(function(res){
-
-				console.log(res);
 	
 				shoeVm.returnedShoe = res.data.shoe;
 				shoeVm.name = shoeVm.returnedShoe[0].name;
@@ -249,44 +230,44 @@
 				shoeVm.description = shoeVm.returnedShoe[0].description;
 				shoeVm.conditions = shoeVm.returnedShoe[0].conditions[0];
 				shoeVm._id = shoeVm.returnedShoe[0]._id;
-				shoeVm.firstColor = shoeVm.returnedShoe[0].colors[0];
-				shoeVm.secondColor = shoeVm.returnedShoe[0].colors[1];
-				shoeVm.thirdColor = shoeVm.returnedShoe[0].colors[2];
+				
+				var colorReturned = shoeVm.returnedShoe[0].colors;
 
-				console.log(shoeVm.returnedShoe);
+/**
+  * POPULATING COLOR THUMBS
+*/
+
+	// If less than 3 colors, shoe colors will return undefined (bug) 
+	// Below fills in colors at all times
+				if (!shoeVm.returnedShoe[0].colors[2]){
+				  shoeVm.thirdColor = '##FFB6C1';
+				} else {
+				  shoeVm.secondColor = shoeVm.returnedShoe[0].colors[2];
+				}
+				if (!shoeVm.returnedShoe[0].colors[1]){
+				  shoeVm.thirdColor = '#93013C';
+				} else {
+				  shoeVm.thirdColor = shoeVm.returnedShoe[0].colors[1];
+				}
+				shoeVm.firstColor = shoeVm.returnedShoe[0].colors[0];
+				
+  // checks how many colors there are
+  // depending on how many, what input label will be set to, to show
+				if (colorReturned.length === 3){
+					shoeVm.pickColor = '3';
+				} else if (colorReturned.length === 2) {
+					shoeVm.pickColor = '2';
+				} else {
+					shoeVm.pickColor = '1';
+				}
 
 /**
   * Populating Shoe Type
 */
 				for(var index in shoeVm.types){
 					if(shoeVm.returnedShoe[0].type == shoeVm.types[index].value){
-						console.log('setting shoe type');
 						shoeVm.type = shoeVm.types[index].value;
 					}
-				}
-
-/**
-  * POPULATING COLOR THUMBS
-
-  * If default colors are found in colorArray
-    will determine how many colors show - using ng-model 
-  * If #804615 not found, then the user has changed all 3 colors
-  * if #93013C is not found, then user has changed 2 colors
-  * else, they default has only changed 1 color 
-  * labels are in strings, so must put the number back into strings
-*/
-				var colorArray = shoeVm.returnedShoe[0].colors;
-				console.log(colorArray);
-
-				if (!colorArray.includes("#804615")){
-					console.log("user has changed all 3 colors");
-					shoeVm.pickColor = '3';
-				} else if (!colorArray.includes("#93013C")) {
-					console.log('user has changed 2nd color');
-					shoeVm.pickColor = '2';
-				} else {
-					console.log('default, user has chosen no color');
-					shoeVm.pickColor = '1';
 				}
 
 /**
@@ -302,19 +283,19 @@
 
 				// temperature to keywords
 				for (var i = 0; i < shoeVm.returnedShoe[0].temperature.length; i++){
-					if (shoeVm.returnedShoe[0].temperature[i] == 'hot'){
+					if (shoeVm.returnedShoe[0].temperature[i] === 'hot'){
 						shoeVm.temp.hot = true;
 					}
-					if (shoeVm.returnedShoe[0].temperature[i] == 'warm'){
+					if (shoeVm.returnedShoe[0].temperature[i] === 'warm'){
 						shoeVm.temp.warm = true;
 					}
-					if (shoeVm.returnedShoe[0].temperature[i] == 'cold'){
+					if (shoeVm.returnedShoe[0].temperature[i] === 'cold'){
 						shoeVm.temp.cold = true;
 					}
-					if (shoeVm.returnedShoe[0].temperature[i] == 'cool'){
+					if (shoeVm.returnedShoe[0].temperature[i] === 'cool'){
 						shoeVm.temp.cool = true;
 					}
-					if (shoeVm.returnedShoe[0].temperature[i] == 'all'){
+					if (shoeVm.returnedShoe[0].temperature[i] === 'all'){
 						shoeVm.temp.all = true;
 					}
 				}
@@ -331,16 +312,16 @@
 
 				// Conditions to keywords // 
 				for (var i = 0; i < shoeVm.returnedShoe[0].conditions.length; i++){
-					if (shoeVm.returnedShoe[0].conditions[i] == 'snow'){
+					if (shoeVm.returnedShoe[0].conditions[i] === 'snow'){
 						shoeVm.cond.snow = true;
 					}
-					if (shoeVm.returnedShoe[0].conditions[i] == 'rain'){
+					if (shoeVm.returnedShoe[0].conditions[i] === 'rain'){
 						shoeVm.cond.rain = true;
 					}
-					if (shoeVm.returnedShoe[0].conditions[i] == 'clear'){
+					if (shoeVm.returnedShoe[0].conditions[i] === 'clear'){
 						shoeVm.cond.clear = true;
 					}
-					if (shoeVm.returnedShoe[0].conditions[i] == 'any'){
+					if (shoeVm.returnedShoe[0].conditions[i] === 'any'){
 						shoeVm.cond.any = true;
 					}
 				} //eo For conditions to keywords

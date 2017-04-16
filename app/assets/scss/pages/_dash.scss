@@ -17,6 +17,10 @@
 .block-opt {
 	background-color: white;
 	
+	.block-opt-mid {
+		background-color: $light-grey;
+	}
+
 	.block-mid {
 		position: relative;
 	}
@@ -44,7 +48,7 @@
 // ==== INVENTORY OF SHOES ==== 
 .inv {
 
-	background-color: rgb(237, 237, 237) !important;
+	background-color: white !important;
 
 	.inv-center{
 		position: relative;
@@ -79,6 +83,10 @@
 			position: relative;
 			top: 30px;
 			width: 25rem;
+
+			div {
+				margin-bottom: 1px;
+			}
 		}
 
 		.inv-clr {
@@ -90,10 +98,6 @@
 		margin-top: line-height-scale(0);	
 		border-bottom: thin solid black;
 		padding-bottom: line-height-scale(3);
-	}
-
-	.inv-block-brand {
-		display: inline-block;
 	}
 
 	// Conditions
