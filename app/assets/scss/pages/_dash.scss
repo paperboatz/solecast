@@ -1,10 +1,25 @@
 //For user-dash.html
 
+// ==== Bootstrap Override ===== 
 
-// top block 
+.input-group {
+   z-index: 0;
+}
+
+// override-boottrap btn search
+.searchBtn {
+	border-radius: 0px;
+	padding: 6.5px 12px;
+}
+
+// ==== TOP BLOCK ===== 
 .block-opt {
 	background-color: white;
 	
+	.block-opt-mid {
+		background-color: $light-grey;
+	}
+
 	.block-mid {
 		position: relative;
 	}
@@ -25,17 +40,14 @@
 			padding-top: line-height-scale(1);
 		}
 
-		.form-control {
-			height: 25px;
-		}
 	} //eo block-filtr-width
 }//eo block-opt
 
 
-// inventory of shoes
+// ==== INVENTORY OF SHOES ==== 
 .inv {
 
-	background-color: rgb(237, 237, 237) !important;
+	background-color: white !important;
 
 	.inv-center{
 		position: relative;
@@ -45,6 +57,13 @@
 
 	.inv-block {
 		display: inline-block;
+	}
+
+	// creates width and position for button
+	.inv-block-editdelete{
+		width: 16%;
+		vertical-align: top;
+		padding-top: 3%;
 	}
 
 	.inv-block-img{
@@ -63,6 +82,10 @@
 			position: relative;
 			top: 30px;
 			width: 25rem;
+
+			div {
+				margin-bottom: 1px;
+			}
 		}
 
 		.inv-clr {
@@ -76,14 +99,20 @@
 		padding-bottom: line-height-scale(3);
 	}
 
-	.inv-block-brand {
-		display: inline-block;
-	}
-
+	// Conditions
 	.inv-block-cond {
-		width: 25%;
+		width: 22%;
 		position: relative;
-		transform: translateY(10%);
+		transform: translateY(20%);
+		-ms-transform: translateY(20%); /* IE 9 */
+        -webkit-transform: rtranslateY(20%); /* Chrome, Safari, Opera */
+
+		span {
+			border-bottom: dotted 1px;
+			padding-bottom: 3px;
+			margin-bottom: 4px;
+			display: inline-block;
+		}
 
 		ul {
 			list-style: none;

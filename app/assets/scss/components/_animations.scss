@@ -527,7 +527,7 @@
   fill: $dark-blue;
 }
 
-// Animate the Logo 
+// LOGO ANIMATION 
 // they are set at a 3s interval 
 .a-ani{
     animation: 3s appear 1 linear;
@@ -607,6 +607,26 @@
   }
   24% {
     fill: $dark-blue;
+  }
+}
+
+/*
+========= CHECKMARK =====
+*/
+
+.checkmarkbounce {
+  animation: 0.5s checkmarkbounce 1 linear;
+}
+
+@keyframes checkmarkbounce {
+  0%{
+    font-size: 50%
+  }
+  95%{
+    font-size: 110%
+  }
+  100%{
+    font-size: 100%
   }
 }
 

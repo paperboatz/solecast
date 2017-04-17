@@ -1,0 +1,35 @@
+.modal-content {
+	border: none;
+	background-color: transparent;
+	border-radius: 0px;
+
+	.modal__body{
+	  padding: 0px 30px 30px;	
+	  border-bottom-left-radius: 6px;
+	  border-bottom-right-radius: 6px;
+
+	  div {
+	  	padding-top: 10px;
+	  	text-align: center;
+	  }
+	}
+}
+
+.modal__head {
+	padding-top: 30px;
+	padding-bottom: 10px;
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+	background-color: $med-blue;
+	border-bottom: solid 1px $mid-grey;
+
+	.glyphicon-ok{
+		color: $light-blue;
+		margin-right: 5px;
+	}
+
+	// immediatly after
+	+ div, button {
+	  background-color: $light-grey;
+	}
+}

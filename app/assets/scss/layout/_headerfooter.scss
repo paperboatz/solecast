@@ -1,3 +1,5 @@
+
+// === over-ride bootstrap === 
 .navbar-default {
 	background-color: inherit;
 	border-color: transparent;
@@ -5,19 +7,37 @@
 	margin-left: 24px;
 }
 
-.navbar-default .navbar-nav > li > a  {
+.navbar-default .navbar-nav > li > a {
 	color: $med-blue;
-
+	fill: $med-blue; 
 }
 
 .nav > li > a {
 	padding: 10px 10px;
 }
 
-@media (min-width: 768px) {
-	.navbar-nav > li > a {
-		padding-bottom: 4px;
-	}
+
+/*
+====== SANDBOX BAR ====
+*/
+
+.sandbox-icon {
+	border: solid $mid-grey 1px; 
+	padding: 2px 4px;
+	margin-right: 4px;
+	display: inline-block;
+	background-color: #585858 ;
+}
+
+.sandboxBar {
+	background-color: rgba(0,0,0,0.75);
+	height: 25px;
+	position: absolute;
+	top: 0px;
+	padding: 0.5% 0 2% 0;
+	width: 100%;
+	text-align: center; 
+	color: white;
 }
 
 
@@ -59,34 +79,27 @@ nav {
 		border-bottom: dotted 1px;
 	}
 
+	a  > .glyphicon-margin {
+		margin-right: 4px;
+	}
+
 	.glyphicon-margin {
 		margin-right: 2px;
+		width: 2rem;
+		height: 2rem;
 	}
 
-	// .tagline-block {
- //  		margin-top: 7px;
-	// }
+	.shoeicon {
+		width: inherit;
+		height: inherit;
+		vertical-align: bottom;
+
+		&:first-child path {
+			fill:inherit; // inherit a link color
+		}
+	}
 } // eo nav
 
-
-	.sandbox-icon {
-		border: solid $mid-grey 1px; 
-		padding: 2px 4px;
-		margin-right: 4px;
-		display: inline-block;
-		background-color: #585858 ;
-	}
-
-	.sandboxBar {
-		background-color: rgba(0,0,0,0.75);
-		height: 25px;
-		position: absolute;
-		top: 0px;
-		padding: 0.5% 0 2% 0;
-		width: 100%;
-		text-align: center; 
-		color: white;
-	}
 
 /*
 ====== FOOTER ====
@@ -111,7 +124,6 @@ footer {
 			padding-left: 5px;
 			line-height: line-height-scale(1);
 		}
-
 
 		.built > ul {
 		    list-style: none;
@@ -149,7 +161,12 @@ footer {
 	}
 }//eo footer
 
+// ===== 0AUTH OVERRIDE====
 
+// no google log in 
+.a0-collapse-social {
+  display: none;
+}
 
 
 

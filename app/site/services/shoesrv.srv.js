@@ -73,8 +73,8 @@
 					self.shoes.push(res.data.shoe);
 					$state.go('user.dash')
 					.then(function(){
-						// refresh to make sure new shoes are added to shoelist
-						$state.reload();
+						// modal manually shown
+						$('#myModal').modal('show');
 					})
 				}
 			})

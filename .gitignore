@@ -79,5 +79,9 @@ Temporary Items
 .sass-cache/
 *.css.map
 
+### mongodb ###
+api/data/db/
+
+
 # End of https://www.gitignore.io/api/node,osx,sass
 

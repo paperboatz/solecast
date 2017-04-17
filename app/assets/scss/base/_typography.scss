@@ -8,7 +8,7 @@
 // font-weight: weight-scale(heavy) - getting mapping of weight-scale 
 
 /*
-====== GLOBAL ====
+ ====================  GLOBAL  ==================== 
 */
 
 label {
@@ -31,22 +31,21 @@ a {
 	}
 	&:focus {
 		color: $color-focus;
-
 	}
 	&:active {
 		color: $color-active;
 	}
 }
 
+
 body {
 	@include type-setting(0);
 	font-family: $text-font-stack;
 }
 
-
 h1 {
 	margin: 0 0 2px 0;	
-	@include type-setting(2);
+	@include type-setting(3);
 	font-family: $display-font-stack;
 }
 
@@ -104,6 +103,9 @@ nav {
 		}
 		&:hover {
 			color: $dark-blue;
+		  .shoeicon:first-child path {
+		    fill: $dark-blue;
+		  }
 		}
 		&:focus {
 			color: $light-blue;
@@ -265,3 +267,18 @@ footer {
 	color: $mid-grey;
 }
 
+/* 
+* ==== MODAL TEXT =====
+*/
+
+.text-modal-header {
+	text-align: center;
+	color: white;
+	@include type-setting(1);
+	text-transform: uppercase;
+}
+
+
+.text-modal-body{
+  @include type-setting(1);
+}
