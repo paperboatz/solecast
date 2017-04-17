@@ -155,7 +155,6 @@
 						<img class='img-dash-thumb' ng-src='{{ctrl.sandles}}' ng-show="shoe.type == 'sandles'">
 						<img class='img-dash-thumb' ng-src='{{ctrl.sneakers}}' ng-show="shoe.type == 'sneakers'">
 					</div>
-
 					<div class='color-palette-middle'> 
 	  					<div ng-repeat='colors in shoe.colors' 
 	  						 ng-style='{
@@ -164,7 +163,6 @@
 		  					"background-color": "{{colors}}"}'>
 	  					</div>
   					</div>
-					
 					<div class='shoe-desc'>
 						<span class='small-text-header'> {{shoe.name | uppercase}} </span>
 						<br>
