@@ -6,8 +6,7 @@ var db = mongoose.connection;
 mongoose.Promise = require('bluebird');
 var jwt = require('express-jwt')
 
-//ADD CORS HEADERS ONTO ALL THE ENDPOINTS
-// Need this to acceess api
+//ADD CORS HEADERS ONTO ALL THE ENDPOINTS TO ACCESS API 
 app.all('/*', function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
@@ -38,16 +37,12 @@ var shoe_routes = require('./routes/shoe_routes');
 var geo_routes = require('./routes/geo_routes'); // delete
 
 // SET ROUTES
-// we create this url, then we navigate to the routes file
-// determined by the require('./route/....')
-// then inside that file, we will locate the specific route we want to use
-// retrieve the information from the browser by entering the url we made and the router end point, in the route file
 app.use('/api/shoes', shoe_routes);
 app.use('/api/geo', geo_routes); // delete
 
 // LISTEN TO SERVER
-app.listen(80, function() {
-	console.log('gurrrrl listening to Port 8080, stop with Ctrl + C');
+app.listen(8080, function() {
+	console.log('gurrrrl listening to Port 80, stop with Ctrl + C');
 });
 
 

@@ -48,33 +48,52 @@
 				templateUrl:'site/partials/user-front.html',
 				controller: 'FrontCtrl as ctrl',
 				resolve:{
-
-						locoFrontObj: function($q, $timeout){
+						
+						locoFrontObj: function($q){
 							
-							function getLocation() {
+							var latLong;
+							var defer = $q.defer();
+							var timePassed = false;
+
+							// Error for Moz bug if the user pressed 'not now' for geolocation
+							// 'not now' option does not trigger anything to respond to
+							(function notNowGeo(){
+								timePassed = true;
+
+								latLong = {
+									latitude: 40.714224,
+									longitude: -73.961452
+								};
+
+								setTimeout(function(){
+									if(timePassed){
+										timePassed = false;
+										console.log('User chose Not Now GeoLocation option')
+										return defer.resolve(latLong)}
+									}, 1000);
+							})();
+							
+							(function getLocation() {
 							    if (navigator.geolocation) {
-							        navigator.geolocation.getCurrentPosition(showPosition, showError)
+							        navigator.geolocation.getCurrentPosition(showPosition, showError);
 							    } else { 
 							        user.words = "Geolocation is not supported by this browser.";
 							    }
-							}
-							getLocation();
-
-							var latLong; 
+							})();
 
 							function showPosition(position){
+								timePassed = false;
 								console.log(position)
-
 		    					latLong = { 
 		    						latitude: position.coords.latitude,
 		    						longitude: position.coords.longitude
 		    					};
-
-		    					return latLong;
+		    					defer.resolve(latLong);
 							}
 
 							function showError(error) {
-
+								timePassed = false;
+								console.log(error);
 								// New York Temp default
 								latLong = {
 									latitude: 40.714224,
@@ -95,38 +114,12 @@
 							            console.log("An unknown error occurred.") 
 							            break;
 							    }
-
-							    console.log('error' + latLong)
-							    return latLong;
+							    return defer.resolve(latLong);
 							}
 
-							var defer = $q.defer();
-							
-							$timeout(function(){
-								
-								// if lat/long is undefined meaning no permission to geocord
-								// then latLong will be these default coordinates (New York)
-								// if it is defined, then continue...
-
-								// if (!latLong == undefined)
-								if (!latLong){
-									latLong = {
-										latitude: 40.714224,
-										longitude: -73.961452
-									};
-
-									defer.resolve(latLong);
-
-								} else {
-									defer.resolve(latLong);
-								}
-							
-							}, 4000); 
-
-							// defering the same amount of time, so we can get the geocord
 							return defer.promise; 
 					}// eo locationObj
-				} // eo resolve
+				} // eo resolve obj
 			})
 			.state('user.dash',{
 				url:'/dash',
@@ -209,7 +202,7 @@
 						}
 					}
 				} else { // or redirect the user to home root so it can log in again
-					// $location.path('/'); 
+					$location.path('/'); 
 				}
 			})// eo $rootScope 
 		})// eo .run

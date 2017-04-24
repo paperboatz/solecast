@@ -55,14 +55,13 @@
 		});
 
 /**
-=============== API CALL TO WEBSITE  ===============
+=============== API CALLS ===============
 */
 
 /**
 	* Check if srv to see if latLong is empty/false, which means no submit in srv yet
 	  will grab current lat/long from app.js resolve locoFrontObj
-	* If true, means submition in srv,
-	  grab the lat/long from srv
+	* If true, means submition in srv, grab the lat/long from srv
 	* lat/long injected in getWeather
 */
 		if (!SettingSrv.latLong) {
@@ -82,7 +81,6 @@
 
 				ApiService.request('/geo/geolocation', {latitude, longitude}, 'GET')
 				.then(function(res){
-					console.log(res);
 					if(res.status === 200){
 						console.log('Sucess from API ');
 						return res;
@@ -91,8 +89,6 @@
 					}
 				})
 				.then(function(res){
-					console.log(res);
-
 				// Formats Google api, return city, country and zip
 					var level_1; // will be country 
 		            var level_2; // will be city
@@ -129,11 +125,9 @@
 		           	  * If it isn't empty = user submiitted in Settings
 		           	  	then, do nothing. SettingsCtrl will set the input to persist in SettingSrv
 		           	*/ 
-					if (!SettingSrv.zip){
-						SettingSrv.zip = level_3;
-					}	
+					if (!SettingSrv.zip){ SettingSrv.zip = level_3}	
 
-		           	 console.log(user.cityProv);
+		           	console.log(user.cityProv);
 				}) // eo .then
 			})(); // eo getGeo
 		
@@ -200,7 +194,7 @@
 					console.log('remained celsius');
 				}
 
-// condense API parameters & define
+// Condense API parameters & define
 // API default conditions: clear-day, clear-night, rain, snow, sleet, wind, 
 // fog, cloudy, partly-cloudy-day, or partly-cloudy-night. 
 
@@ -224,7 +218,7 @@
 					currentTemp: currentTempOnly,
 					conditions: weatherObj, 
 					maxTemp: maxNum
-				};// eo completeWeatherObj 
+				} // eo completeWeatherObj 
 			})
 			.then(function(res){
 
@@ -235,18 +229,10 @@
 /**
   *	TRANSLATING WEATHER API TEMP TO KEYWORDS 
 */
-				if (res.maxTemp > 28 && res.maxTemp < 75){
-  					wTemp = 'hot';
-				}
-				if (res.maxTemp > 18 && res.maxTemp <= 28){
-					wTemp = 'warm';
-				}
-				if (res.maxTemp > 5 && res.maxTemp <= 18){
-					wTemp = 'cool';
-				}
-				if (res.maxTemp > -50 && res.maxTemp <= 5){
-					wTemp = 'cold';
-				}		
+				if (res.maxTemp > 28 && res.maxTemp < 75){ wTemp = 'hot' }
+				if (res.maxTemp > 18 && res.maxTemp <= 28){ wTemp = 'warm' }
+				if (res.maxTemp > 5 && res.maxTemp <= 18){ wTemp = 'cool' }
+				if (res.maxTemp > -50 && res.maxTemp <= 5){ wTemp = 'cold' }		
 
 /**
 =============== SHOE & WEATHER CONDITIONS FILTER ===============
@@ -309,15 +295,16 @@
 		  	} else if (weatherCond.includes('rain')){
 		  		user.rain = true;
 		  	}
-/*
-====== RAIN ANI ========
-* https://codepen.io/wpaix/pen/OVXymj
-* loop creates multiple rain and snow objects/droplets
-* objects are fed continulously into conditional spawn
-* function uses this obj to append css prop to css & html template
-* clear cond is outside of loop bc we want to execute once
-* it is a ng-show with svg in html already
-*/ 
+
+			/*
+			====== RAIN ANI ========
+			* https://codepen.io/wpaix/pen/OVXymj
+			* loop creates multiple rain and snow objects/droplets
+			* objects are fed continulously into conditional spawn
+			* function uses this obj to append css prop to css & html template
+			* clear cond is outside of loop bc we want to execute once
+			* it is a ng-show with svg in html already
+			*/ 
 
 			function Droplet(){};
 			Droplet.prototype.left = function(){ 
