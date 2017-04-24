@@ -34,11 +34,11 @@ db.once('open', function(){
 
 // ROUTE CONFIG
 var shoe_routes = require('./routes/shoe_routes');
-var geo_routes = require('./routes/geo_routes'); // delete
+var geo_routes = require('./routes/geo_routes'); 
 
 // SET ROUTES
 app.use('/api/shoes', shoe_routes);
-app.use('/api/geo', geo_routes); // delete
+app.use('/api/geo', geo_routes);
 
 // LISTEN TO SERVER
 app.listen(80, function() {
