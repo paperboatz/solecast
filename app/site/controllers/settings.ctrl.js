@@ -39,7 +39,7 @@
 
 			var zip = settingsVm.zip;
 
-			function getZip(){
+			(function getZip(){
 				ApiService.request('/geo/zipcode', {zip}, 'GET')
 				.then(function(res){
 
@@ -63,8 +63,7 @@
 						$state.go('user.front_page');
 					}
 				})
-			}		
-			getZip();
+			})();
 	
 		} // update profilezip
 

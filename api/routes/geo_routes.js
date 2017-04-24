@@ -43,8 +43,6 @@ router.get('/zipcode', function(req,res){
 });
 
 router.get('/geolocation',function(req,res){
-
-
 	// If there is an Error (they refuse to give lat long) 
 	// latitude returns undefined, NaN
 	// then lat, long will be this:
@@ -69,7 +67,7 @@ module.exports = router;
 
 
 // NOTES
-// Install node request to make http calls in node
+// Requre 'request' to make http calls in node
 // we will see every resp from server in server terminal!! not in developer tools
 // See headers not in console.log object, BUT...
 // network tab in dev tools chrome, click on link to see header

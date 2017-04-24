@@ -91,11 +91,8 @@ router.post('/newshoe',function(req,res){
 router.delete('/:shoeId',function(req,res){
 	
 	console.log('delete shoeId')
-	console.log(req)
 	var where = {_id:req.params.shoeId};
-
 	console.log(req.params.shoeId)
-
 	console.log(where);
 
 	ShoeSchema.findOne(where, function(err, shoe) {
